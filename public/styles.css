@@ -1,0 +1,1021 @@
+/* Tipografía base y colores */
+body {
+  font-family: Verdana, Geneva, Tahoma, sans-serif; 
+    font-size: 1.3rem;
+    line-height: 1.8;
+    background-color: #FAFAFA;
+    color: #212121; /* gris oscuro para texto */
+    margin: 0;
+    padding: 0;
+  }
+
+  
+  h1, h2, h3, .navbar {
+    font-family: 'Merriweather', serif;
+    font-weight: 700;
+    color: #000;
+  }
+  
+
+  .btn, .nav-link {
+    font-family: 'Inter', sans-serif;
+    font-weight: 500;
+    letter-spacing: 0.3px;
+  }
+
+  
+  /* Color de acento + sistema de espaciado */
+  :root {
+    --accent-color: #892A2A;
+    /* Spacing system */
+    --space-title-text:     24px;   /* título → texto (mobile) */
+    --space-text-component: 40px;   /* texto → componente (mobile) */
+    --space-section-py:     72px;   /* padding vertical de sección (mobile) */
+  }
+
+  @media (min-width: 992px) {
+    :root {
+      --space-title-text:     40px;
+      --space-text-component: 56px;
+      --space-section-py:     100px;
+    }
+  }
+  
+  
+  
+  
+  /* Enlaces */
+  a {
+    color: inherit;
+    text-decoration: none;
+  }
+
+
+/* === COMPONENTE GLOBAL: BOTÓN CTA === */
+.btn-cta {
+  display: inline-block;
+  font-family: 'Inter', sans-serif;
+  font-size: 1.05rem;
+  padding: 0.7rem 2rem;
+  color:white;               /* texto blanco */
+  background-color: #892A2A;
+  font-weight: 600;
+  letter-spacing: 0.3px;
+  transition: all 0.25s ease;
+  text-decoration: none;
+  cursor: pointer;
+  z-index: 2;
+  border-radius: 8px;
+}
+
+
+
+
+.btn-cta:hover,
+.btn-cta:focus {
+  background-color: #621e1e;
+  color: #ffffff;
+  outline: none;
+  transform: translateY(-3px) scale(1.04);
+  box-shadow: 0 8px 20px rgba(137, 42, 42, 0.45);
+}
+
+.btn-cta:active {
+  transform: translateY(0);
+  box-shadow: 0 1px 4px rgba(137, 42, 42, 0.2);
+  background-color: #4e1818;
+}
+
+
+.btn-cta-practica {
+  display: inline-block;
+  width: 100%;
+  font-family: 'Inter', sans-serif;
+  font-size: 1rem;
+  font-weight: 500;
+  color: #892A2A;
+  background-color: #fff;
+  border: 1px solid #eee;      /* ✅ borde sutil para contraste y foco */
+  border-radius: 8px;
+  padding: 0.75rem 1rem;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+  transition: transform 0.2s ease, box-shadow 0.2s ease, background-color 0.2s ease;
+  cursor: pointer;
+}
+
+.btn-cta-practica:hover,
+.btn-cta-practica:focus {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 20px rgba(0,0,0,0.18);
+  background-color: #f8f8f8;
+  color: #892a2a;
+  text-decoration: none;
+  outline: none;
+}
+
+.btn-cta-practica:active {
+  transform: translateY(0);
+  box-shadow: 0 2px 6px rgba(0,0,0,0.08);
+  background-color: #efefef;
+}
+
+.btn-cta-practica:focus-visible {
+  outline: 2px solid #892A2A;  /* ✅ foco accesible real */
+  outline-offset: 2px;
+}
+
+.btn-cta-practica-lg {
+  text-align: left;
+  font-size: 0.9rem;
+}
+
+/* Opcional: versión responsive */
+@media (max-width: 576px) {
+  .btn-cta-practica {
+    font-size: 0.95rem;
+    padding: 0.6rem 0.9rem;
+  }
+}
+
+  
+  /* Navbar fija con sombra sutil */
+  .navbar {
+    min-height: 64px;
+    display: flex;
+    align-items: center;
+    justify-content: initial;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    background-color: #ffffff;
+    z-index: 1000;
+    border-bottom: 1px solid #e0e0e0;
+  }
+
+ .navbar .navbar-brand {
+  display: flex;
+  align-items: center;
+  margin-right: auto;
+  padding: 0.5rem 0;
+ }
+    
+
+  .navbar .navbar-brand img {
+    display: block;
+    height: auto;
+    max-height: 72px;
+    width: auto;
+    object-fit: contain;
+  }
+
+
+  
+  /* Tipografía y estilo de los links */
+  /* Navbar sin serif y con spacing fijo */
+.navbar .nav-link {
+    font-family: 'EB Garamond', serif;
+    color: #111;
+    font-size: 1.125rem;
+    font-weight: 400;
+    transition: color 0.2s ease-in-out, border-color 0.2s ease-in-out;
+    text-decoration: none;
+    margin-right: 1rem;
+    border-bottom: 2px solid transparent; /* reserva espacio para el borde */
+    padding-bottom: 2px;
+  }
+
+  /* Último nav-link sin margen extra */
+  .navbar .nav-link:last-child {
+    margin-right: 0;
+  }
+
+  /* Hover: color de acento + línea inferior bordó */
+  .navbar .nav-link:hover {
+    color: #892A2A;
+    text-decoration: none;
+    border-bottom-color: #892A2A;
+  }
+  
+  /* Navbar layout fix: evita que los links se desplacen al hacer hover */
+  .navbar .nav-item {
+    display: inline-block;
+  }
+
+
+  
+  /*Nav bar mobile*/
+  /* Evitar que la fila se rompa a 2 líneas */
+.navbar .container-fluid { 
+  flex-wrap: nowrap;
+}
+
+
+/* Toggler sin borde “feíto” */
+.navbar-toggler { 
+  border: none;
+}
+
+/* Ícono del toggler visible en fondo claro */
+.navbar-toggler-icon {
+  background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 30 30' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgba(33,33,33,0.75)' stroke-width='2' stroke-linecap='round' d='M4 7h22M4 15h22M4 23h22'/%3E%3C/svg%3E");
+}
+
+/* MOBILE (≤992px): menos padding y logo más chico para que quepa todo en una fila */
+@media (max-width: 991.98px) {
+  .navbar {
+    height: 88px;                    /* opcional: navbar más baja en mobile */
+    padding: 0 16px;      /* reduce el px-custom en mobile */
+  }
+  .navbar-brand img {
+    max-height: 32px;                /* achica el logo */
+    width: auto;
+    height: auto;
+  }
+  .navbar .container-fluid {
+    gap: .5rem;                      /* un poco de aire entre logo y toggler */
+  }
+  /* Opcional: compactar enlaces del colapso */
+  .navbar-nav .nav-link {
+    padding-top: .5rem;
+    padding-bottom: .5rem;
+  }
+}
+
+/* === FIX comportamiento del menú mobile === */
+@media (max-width: 991.98px) {
+
+  /* el menú se abre como columna debajo de la navbar */
+  .navbar-collapse-mobile {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    background-color: #fff; /* fondo blanco que cubre el logo */
+    padding: 1rem 0;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    z-index: 999; /* sobre el resto del contenido */
+  }
+
+  /* los enlaces se apilan en columna centrada */
+  .navbar-nav {
+    flex-direction: column;
+    align-items: flex-start;
+    padding-left: 1.5rem;
+  }
+
+  /* separaciones suaves entre links */
+  .navbar-nav .nav-item {
+    margin-bottom: 0.5rem;
+  }
+
+  /* evita que el logo quede superpuesto */
+  .navbar-brand {
+    z-index: 1001;
+  }
+}
+
+
+
+
+
+/*Nuevo hero*/
+
+/* ==== HERO ESTÁTICO ==== */
+#hero.hero-static {
+  position: relative;
+  height: 75vh; /* Deja lugar para la navbar */
+  width: 100%;
+  overflow: hidden;
+}
+
+/* Imagen de fondo */
+#hero .hero-bg {
+  position: absolute;
+  inset: 0;
+  background-image: url('images/entrada.jpg'); /* Cambiá la ruta según tu carpeta */
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed; /* efecto parallax suave */
+  z-index: 1;
+}
+
+/* Overlay para mejorar contraste del texto */
+#hero .hero-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    90deg,
+    rgba(0, 0, 0, 0.65) 0%,
+    rgba(0, 0, 0, 0.45) 45%,
+    rgba(0, 0, 0, 0.25) 100%
+  );
+  z-index: 2;
+}
+
+/* Contenido del hero */
+#hero .hero-copy {
+  position: relative;
+  z-index: 3;
+  color: #FAFAFA;
+  max-width: 800px;
+  padding-left: 100px;
+  padding-right: 100px;
+}
+
+/* Título y subtítulo */
+#hero .hero-title {
+font-family: 'Times New Roman', Times, serif;
+  font-weight: 700;
+  font-size: clamp(3.2rem, 4.5vw, 5rem);
+  line-height: 1.1;
+  letter-spacing: 0.2px;
+  color: #fafafa;
+}
+
+#hero .hero-subtitle {
+  font-size: 2rem;
+  font-weight: 400;
+  color: #fafafa;
+}
+
+
+/* === Botón CTA dentro del HERO === */
+.hero-cta-btn {
+  display: inline-block;
+  font-size: 1.1rem;
+  padding: 0.75rem 1.5rem;
+  background-color: transparent;       /* fondo transparente */
+  color: white;                         /* texto blanco */
+  border: 2px solid #ffffff;           /* borde bordó */
+  border-radius: 8px;
+  font-weight: 600;
+  letter-spacing: 0.3px;
+  transition: all 0.3s ease;
+
+}
+
+.hero-cta-btn:hover {
+  background-color: #fff;              /* fondo blanco */
+  color: #892A2A;                      /* texto bordó */
+  border-color: #892A2A;               /* borde bordó */
+  text-decoration: none;
+  transform: translateY(-3px) scale(1.04);
+  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.35);
+}
+
+.hero-cta-btn:active {
+  transform: translateY(0);
+  box-shadow: none;
+  background-color: #f0f0f0;
+}
+
+
+/* ==== RESPONSIVE ==== */
+@media (max-width: 991.98px) {
+  #hero.hero-static {
+    height: 88vh;
+  }
+  #hero .hero-copy {
+    padding-left: 24px;
+    padding-right: 24px;
+  }
+
+  #hero .hero-bg {
+    background-attachment: scroll; /* quita parallax en mobile */
+  }
+
+  #hero .hero-title {
+    /* crece más agresivo en pantallas chicas */
+    font-size: clamp(3rem, 12vw, 5rem);
+  }
+
+  /* Subtítulo un toque más contenido para balancear */
+  #hero .hero-subtitle {
+    font-size: clamp(1.25rem, 4.5vw, 1.4rem);
+  }
+}
+
+
+
+/* ==== CTA BAND mejorada ==== */
+.band-cta {
+  position: relative;
+
+  padding-block: clamp(2rem, 4vw, 4rem);
+  border-top: 4px solid #892A2A; /* acento de marca */
+ 
+  overflow: hidden;
+}
+
+.band-cta::before {
+  /* textura sutil para profundidad */
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(1200px 300px at 10% 0%, rgba(255,255,255,0.06), transparent 60%),
+              radial-gradient(800px 200px at 90% 100%, rgba(255,255,255,0.04), transparent 60%);
+  pointer-events: none;
+}
+
+.band-cta__inner {
+  display: flex;
+  align-items:baseline; /* 🔹 centra verticalmente h3 y el botón */
+  justify-content: space-between; /* o space-between si querés separarlos */
+  gap: 2rem; /* espacio entre el texto y el botón */
+  flex-wrap: wrap; /* permite que se apilen en mobile */
+  text-align: center;
+}
+
+.band-cta__title {
+  margin: 0;
+  color: #fff;
+  font-family: 'EB Garamond', serif;
+  font-weight: 700;
+  line-height: 1.15;
+  letter-spacing: .2px;
+  font-size: clamp(1.6rem, 3vw, 2.25rem);
+  max-width: 60ch;
+  position: relative;
+}
+
+.band-cta__title::after {
+  /* subrayado de acento corto */
+  content: "";
+  display: block;
+  width: 72px;
+  height: 3px;
+  background: #892A2A;
+  margin-top: .75rem;
+}
+
+.band-cta__title span {
+  color: #eaeaea; /* leve contraste para la segunda frase */
+}
+
+
+
+/* Variante ghost: fondo transparente, borde y texto blanco; hover invierte con bordó */
+.btn-cta--ghost {
+  background: transparent;
+  color: #fff;
+  border: 2px solid #fff;
+}
+
+.btn-cta--ghost:hover {
+  background: #fff;
+  color: #892A2A;
+  border-color: #892A2A;
+  text-decoration: none;
+  transform: translateY(-3px) scale(1.04);
+  box-shadow: 0 10px 24px rgba(255, 255, 255, 0.25);
+}
+
+.btn-cta--ghost:active {
+  transform: translateY(0);
+  box-shadow: none;
+  background: #f0f0f0;
+}
+
+/* Responsive: stack y centrado en mobile */
+@media (max-width: 991.98px) {
+  .band-cta__inner {
+    justify-content: center;
+    text-align: center;
+  }
+  .band-cta__title::after {
+    margin-inline: auto;
+  }
+}
+
+
+
+/* Base reutilizable para todos los títulos de sección */
+.section-title {
+  font-family: 'Times New Roman', Times, serif;
+  font-weight: 700;
+  letter-spacing: .2px;
+  line-height: 1.1;
+  font-size: 3rem;
+  margin: 0 0 .75rem 0;
+}
+
+/* Base reutilizable para el párrafo intro */
+.section-intro {
+  font-size: 1.1rem;
+  line-height: 1.7;
+  color: #111;
+}
+
+/* === SISTEMA DE ESPACIADO === */
+
+/* Título → texto */
+.section-title {
+  margin-bottom: var(--space-title-text) !important;
+}
+
+/* Texto → componente (clase utilitaria manual) */
+.gap-component {
+  margin-bottom: var(--space-text-component) !important;
+}
+
+/* Texto → componente: aplicado automáticamente al último párrafo
+   antes del componente en cada sección */
+.estudio .section-intro:last-of-type,
+.publicaciones .section-intro:last-of-type,
+#areas .section-intro:last-of-type,
+#areas .col-12 > p:last-of-type {
+  margin-bottom: var(--space-text-component) !important;
+}
+
+
+/* ===== EL ESTUDIO (layout 2 filas) ===== */
+.estudio {
+  background: #f6f6f6;
+  padding-block: var(--space-section-py);
+}
+
+/* Elimina doble padding acumulado por Bootstrap utilities internas */
+.estudio > .container { margin-top: 0 !important; }
+.estudio > .container > .row:first-child {
+  margin-top: 0 !important;
+  padding-top: 0 !important;
+  padding-bottom: 0 !important;
+}
+
+/* Tipos tal como venías usando */
+
+
+.estudio .section-intro {
+
+  font-size: 1.25rem; /* 18px */
+  line-height: 1.8;
+  color: #444;
+
+}
+
+
+
+  
+
+
+/* === Cards Socios optimizadas === */
+
+#socios .row.g-4 > [class*="col-"] {
+  display: flex;
+  align-items: stretch;
+  contain: layout; /* aísla el cálculo de layout */
+}
+
+.card-socio {
+  position: relative;
+  border: none;
+  background: #fff;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  border-radius: 8px;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+  will-change: transform, box-shadow;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+}
+
+.card-socio:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.15);
+}
+
+.card-socio .card-img-top {
+  width: 100%;
+  aspect-ratio: 4/5;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.3s ease;
+}
+
+/* Sutil zoom de imagen */
+.card-socio:hover .card-img-top {
+  transform: scale(1.05);
+}
+
+.card-socio .card-body {
+  display: flex;
+  flex-direction: column;
+  gap: .2rem;
+  padding: .75rem 1rem 1rem;
+  flex: 1;
+}
+
+.card-socio .card-title {
+  font-size: 1.05rem;
+  line-height: 1.25;
+  margin: .25rem 0 .15rem;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  min-height: calc(1.25em * 2);
+}
+
+.card-socio .card-subtitle {
+  font-size: .95rem;
+  color: #555;
+  margin: 0;
+}
+
+/* Reduce motion setting */
+@media (prefers-reduced-motion: reduce) {
+  .card-socio { transition: none; }
+  .card-socio:hover { transform: none; box-shadow: none; }
+}
+
+/* Accessible focus ring: visible cuando la card es enfocada por teclado */
+.card-socio:focus-within {
+  outline: 2px solid #892A2A;
+  outline-offset: 2px;
+}
+
+
+
+
+
+
+  
+  
+
+
+ 
+
+  
+/* CONTACTO */
+.contacto-section {
+  background-color: #111;
+  padding-top: var(--space-section-py);
+  padding-bottom: var(--space-section-py);
+}
+
+/* Elimina doble padding */
+.contacto-section > .container {
+  padding-top: 0 !important;
+  padding-bottom: 0 !important;
+}
+.contacto-section .section-title {
+  margin-top: 0 !important;
+  padding-top: 0 !important;
+}
+
+
+.section-title-contacto { color: #fff; }
+
+.contacto-list li {
+  font-size: 1.05rem;
+  line-height: 1.6;
+}
+
+.contacto-icon {
+  font-size: 1.25rem;
+  color: #fff;                /* para contraste en fondo oscuro */
+  margin-top: 2px;
+}
+
+.contacto-link {
+  color: #fff;
+  text-underline-offset: 2px;
+}
+.contacto-link:hover {
+  text-decoration: underline;
+
+
+}
+
+/* Mapa responsivo: usa aspect-ratio moderno */
+.map-container {
+  position: relative;
+  width: 100%;
+  min-height: 260px;
+  border-radius: 8px;
+  overflow: hidden;
+  aspect-ratio: 16 / 9;       /* ajustá a gusto */
+}
+
+.map-container iframe {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  border: 0;
+}
+
+
+/* ===== #AREAS ===== */
+#areas {
+  padding-block: var(--space-section-py) !important;
+  margin-top: 0 !important;
+  margin-bottom: 0 !important;
+}
+#areas .section-title {
+  margin-top: 0 !important;
+  padding-top: 0 !important;
+}
+#areas > .container > .row {
+  margin-top: 0 !important;
+  padding-top: 0 !important;
+  padding-bottom: 0 !important;
+  margin-bottom: 0 !important;
+}
+
+/* ===== #SOCIOS ===== */
+#socios {
+  padding-block: var(--space-section-py) !important;
+  margin-top: 0 !important;
+  margin-bottom: 0 !important;
+}
+#socios > .container > .row {
+  padding-bottom: 0 !important;
+}
+
+/* Mantener consistencia de márgenes laterales (usa tu px-custom global) */
+.px-custom {
+  padding-left: 100px; 
+  padding-right: 100px; 
+}
+
+/* Afina padding en pantallas chicas */
+@media (max-width: 576px) {
+  .px-custom {
+    padding-left: 1rem !important;
+    padding-right: 1rem !important;
+  }
+}
+
+
+  
+/* Modal */
+.modal-content {
+  border-radius: 4px;
+}
+
+.modal-header {
+  border-bottom: none;
+  
+}
+
+.modal-title {
+  font-family: 'Times New Roman', Times, serif;
+  font-weight: 700;
+}
+
+@media (max-width: 576px) {
+  .practice-btn {
+    font-size: 0.85rem;
+  }
+
+
+}
+
+
+footer {
+  background-color: #111;
+  font-size: 0.9rem;
+}
+
+
+.card-title {
+  font-size: 1.2rem;
+  font-weight: 400;
+
+}
+
+
+
+/* --- Columna fija dentro del modal --- */
+.modal-col-sticky {
+  position: sticky;
+  top: 0;
+  align-self: flex-start; /* asegura que no se estire */
+  height: fit-content;
+}
+
+/* Opcional: mejora visual de la imagen fija */
+.modal-col-sticky img {
+  border-radius: 6px;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.15);
+  object-fit: cover;
+  width: 100%;
+  height: auto;
+}
+
+/* Ajuste del modal scrollable */
+.modal-dialog-scrollable .modal-content {
+  max-height: 90vh; /* mantiene visible el encabezado */
+}
+
+
+
+
+.modal-body {
+  overflow-y: auto;
+  padding-right: 1rem;
+  font-family: 'Times New Roman', Times, serif;
+}
+
+  
+.modal-body ul {
+  margin-bottom: 1.25rem;
+}
+
+.modal-body li {
+  margin-bottom: .35rem;   /* micro ritmo */
+  line-height: 1.6;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  font-size: 0.9rem;
+}
+
+/* Responsive: quita sticky en mobile */
+@media (max-width: 767.98px) {
+  .modal-col-sticky {
+    position: static;
+    margin-bottom: 1rem;
+  }
+}
+
+
+
+
+/* Texto dentro de los modales */
+.modal-body p {
+ font-size: 0.95rem;
+  line-height: 1.6;
+  color: #333;
+  margin-bottom: 0.75rem;
+  font-family: Verdana, Geneva, Tahoma, sans-serif; /* mantiene coherencia con el resto del sitio */
+}
+
+/* Opcional: enlaces dentro del modal */
+.modal-body a {
+  color: #892A2A;
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.modal-body a:hover {
+  color: #000;
+  text-decoration: underline;
+}
+
+.caption {
+  font-size: 0.9rem;
+  color: #666666;
+  font-weight: 300;
+}
+
+
+/* ===== SECCIÓN PUBLICACIONES ===== */
+.publicaciones {
+  background-color: #fafafa;
+  padding-block: var(--space-section-py);
+}
+
+/* Elimina doble padding */
+.publicaciones > .container { margin-top: 0 !important; }
+.publicaciones > .container:last-child { padding-bottom: 0 !important; }
+.publicaciones > .container > .row {
+  margin-top: 0 !important;
+  padding-top: 0 !important;
+  padding-bottom: 0 !important;
+}
+
+.publicaciones .section-title {
+  font-family: 'Times New Roman', Times, serif;
+  font-weight: 700;
+  font-size: clamp(2rem, 4vw, 3rem);
+  line-height: 1.1;
+  color: #000;
+}
+
+.publicaciones .section-intro {
+  font-size: 1.15rem;
+  line-height: 1.7;
+  color: #333;
+}
+
+/* === CARD DE PUBLICACIÓN === */
+.card-publicacion {
+  background-color: #fff;
+  border-radius: 8px;
+  overflow: hidden;
+  transition: all 0.3s ease;
+}
+
+.card-publicacion:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 24px rgba(0,0,0,0.12);
+}
+
+.card-publicacion .card-img-top {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+}
+
+.card-publicacion .card-body {
+  padding: 1.25rem 1.25rem 1.5rem;
+}
+
+.card-publicacion .card-title {
+  font-family: 'EB Garamond', serif;
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: #111;
+  margin-bottom: 0.5rem;
+}
+
+
+/* Meta: autor, fecha, medio */
+.card-publicacion .card-meta {
+  font-size: 0.85rem;
+  color: #777;
+  margin-bottom: 0.75rem;
+}
+
+.card-publicacion .card-meta span {
+  display: block;
+}
+
+/* (Se mantiene .card-text por si la usás en otros lados) */
+.card-publicacion .card-text {
+  font-size: 0.95rem;
+  color: #555;
+  margin-bottom: 1rem;
+}
+
+/* Botón de descarga / leer artículo */
+.btn-cta-download {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: #892A2A;
+  background-color: #fff;
+  border: 2px solid #892A2A;
+  border-radius: 6px;
+  padding: 0.5rem 1rem;
+  transition: all 0.25s ease;
+  text-decoration: none;
+}
+
+.btn-cta-download:hover {
+  background-color: #892A2A;
+  color: #fff;
+  text-decoration: none;
+  transform: translateY(-4px);
+  box-shadow: 0 8px 20px rgba(137, 42, 42, 0.4);
+}
+
+.btn-cta-download:active {
+  transform: translateY(0);
+  box-shadow: none;
+  background-color: #621e1e;
+}
+
+/* Responsive */
+@media (max-width: 991.98px) {
+  .card-publicacion .card-img-top {
+    height: 160px;
+  }
+  .card-publicacion .card-title {
+    font-size: 1rem;
+  }
+}
+
+@media (max-width: 575.98px) {
+  .publicaciones .section-intro {
+    font-size: 1rem;
+  }
+  .btn-cta-download {
+    font-size: 0.9rem;
+    padding: 0.45rem 0.9rem;
+  }
+}
+
+
+/* Icono hamburguesa visible (color #892A2A sobre fondo claro) */
+.custom-navbar .navbar-toggler {
+  border: 0; /* opcional */
+}
+
+.custom-navbar .navbar-toggler-icon {
+  /* SVG inline para que no dependa de .navbar-light/.navbar-dark */
+  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba(137,42,42, 1)' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
+}
+
+
+/* Afina padding en pantallas chicas */
+@media (max-width: 576px) {
+  .px-custom {
+    padding-left: 1rem !important;
+    padding-right: 1rem !important;
+  }
+}
+

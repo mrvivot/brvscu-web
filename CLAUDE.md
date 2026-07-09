@@ -599,6 +599,7 @@ _Vacío — se define en la fase de Dirección visual: paleta, tipografía, spac
 - Orden de fases acordado: Resguardo → Dirección visual → Setup técnico → Construcción iterativa por página → Contenido/SEO/formulario → QA → Deploy y cutover.
 - Orden de construcción por página: Home → Áreas de práctica → Equipo → Publicaciones → Contacto → Nav/Footer global.
 - Estructura y CSS se resuelven antes que las animaciones — no migrar contenido y animar en simultáneo.
+- Astro intercepta y bundlea con Vite cualquier `<script src="...">` por defecto, incluso apuntando a CDN externo o a `public/`. Cualquier script que deba cargarse tal cual (Bootstrap bundle, AOS, JS propio en `public/`) necesita la directiva `is:inline`. Confirmado en la POC de Home (2026-07-09).
 
 ### Research / contexto disponible
 - Sitio en producción relevado: 5-6 páginas HTML estáticas, sin build step, diseño y desarrollo originales del propio Manuel.
@@ -620,6 +621,8 @@ _Vacío — se define en la fase de Dirección visual: paleta, tipografía, spac
 2026-07-09 — Backup local creado ("Copia de brvscu 3 - pre-git 2026-07-09"). Repo git inicializado, identidad global configurada (Manuel Rojo Vivot <mrvivot@gmail.com>), commit inicial (55 archivos) pusheado a https://github.com/mrvivot/brvscu-web.git rama `main`. Verificado por coincidencia de SHA local/remoto.
 
 2026-07-09 — Confirmado el stack de animación (Bootstrap 5.3.5 + AOS 2.3.1, `js/main.js` sin lógica custom). Baseline de Lighthouse corrido sobre producción: Performance 68 · Accessibility 98 · Best Practices 96 · SEO 100. Puntos 3 y 4 de próximos pasos quedan resueltos.
+
+2026-07-09 — POC técnica de Astro corrida en rama `astro-migration`: scaffold con plantilla `minimal`, Home migrada a `src/pages/index.astro` manteniendo Bootstrap 5.3.5 + AOS 2.3.1 vía CDN tal cual. Confirmado visualmente idéntico al original con screenshots headless a 1440px (localhost vs producción). Única fricción real: Astro bundlea con Vite cualquier `<script src="...">` por defecto (CDN o `public/`), rompiendo Bootstrap JS y `js/main.js`; se resolvió agregando `is:inline` a esos scripts (ver Decisiones tomadas hasta ahora). POC queda aislada en `astro-migration`, sin mergear a `main`.
 
 ---
 
