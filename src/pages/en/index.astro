@@ -3,23 +3,23 @@ import { getRelativeLocaleUrl } from "astro:i18n";
 
 const esUrl = getRelativeLocaleUrl("es");
 const enUrl = getRelativeLocaleUrl("en");
-const currentLocale = Astro.currentLocale ?? "es";
+const currentLocale = Astro.currentLocale ?? "en";
 ---
 
 <!DOCTYPE html>
-<html lang="es">
+<html lang="en">
 
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="description" content="Estudio jurídico BRVSCU. Asesoramiento legal para empresas y personas en civil, comercial, laboral, penal y más." />
-  <title>Berdaguer | Rojo Vivot | Silvero | Canziani | Uriburu - Abogados</title>
+  <title>Berdaguer | Rojo Vivot | Silvero | Canziani | Uriburu - Law Firm</title>
 
   <!-- Hreflang -->
-  <link rel="canonical" href="https://brvscu.com.ar/index.html" />
-  <link rel="alternate" href="https://brvscu.com.ar/index.html" hreflang="es" />
-  <link rel="alternate" href="https://brvscu.com.ar/index_en.html" hreflang="en" />
-  <link rel="alternate" href="https://brvscu.com.ar/index.html" hreflang="x-default" />
+  <link rel="canonical" href="https://brvscu.com.ar/en" />
+  <link rel="alternate" href="https://brvscu.com.ar/en" hreflang="en" />
+  <link rel="alternate" href="https://brvscu.com.ar/" hreflang="es" />
+  <link rel="alternate" href="https://brvscu.com.ar/" hreflang="x-default" />
 
   <!-- Bootstrap CSS (primero) -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/css/bootstrap.min.css" rel="stylesheet">
@@ -40,8 +40,8 @@ const currentLocale = Astro.currentLocale ?? "es";
   <!-- === NAVBAR === -->
   <nav class="navbar navbar-expand-lg fixed-top custom-navbar shadow-sm px-custom">
     <div class="container-fluid align-items-center justify-content-between">
-      <a class="navbar-brand" href="index.html">
-        <img src="/images/brvscu.png" alt="Berdaguer | Rojo Vivot | Silvero | Canziani | Uriburu - Abogados" />
+      <a class="navbar-brand" href="index_en.html">
+        <img src="/images/brvscu.png" alt="Berdaguer | Rojo Vivot | Silvero | Canziani | Uriburu - Law Firm" />
       </a>
 
       <!-- Toggler para mobile -->
@@ -53,10 +53,10 @@ const currentLocale = Astro.currentLocale ?? "es";
 
       <div class="collapse navbar-collapse navbar-collapse-mobile" id="navbarNav">
         <ul class="navbar-nav ms-auto">
-          <li class="nav-item px-2"><a class="nav-link" href="equipo.html">Nuestro equipo</a></li>
-          <li class="nav-item px-2"><a class="nav-link" href="areas.html">Áreas de práctica</a></li>
-          <li class="nav-item px-2"><a class="nav-link" href="publicaciones.html">Publicaciones</a></li>
-          <li class="nav-item px-2"><a class="nav-link" href="contacto.html">Contacto</a></li>
+          <li class="nav-item px-2"><a class="nav-link" href="equipo_en.html">Our Team</a></li>
+          <li class="nav-item px-2"><a class="nav-link" href="areas_en.html">Practice Areas</a></li>
+          <li class="nav-item px-2"><a class="nav-link" href="publicaciones_en.html">Publications</a></li>
+          <li class="nav-item px-2"><a class="nav-link" href="contacto_en.html">Contact us</a></li>
 
           <li class="nav-item dropdown px-2">
             <a class="nav-link dropdown-toggle" href="#" id="languageDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
@@ -84,82 +84,87 @@ const currentLocale = Astro.currentLocale ?? "es";
       <!-- Contenido principal -->
       <div class="container-fluid h-100 d-flex align-items-center px-custom mt-5">
         <div class="hero-copy">
-          <h1 class="hero-title mb-3">BRVSCU Abogados</h1>
+          <h1 class="hero-title mb-3">BRVSCU Law Firm</h1>
           <p class="hero-subtitle mb-4">
-            Profesionales que combinan prestigio, trayectoria judicial, conocimiento práctico y entusiasmo.
+            Professionals who combine prestige, judicial experience, practical know-how and enthusiasm.
           </p>
 
         </div>
       </div>
     </section>
 
-    <!-- BANDA CTA INFERIOR -->
+    <!-- CTA BAND -->
     <section class="band-cta  text-bg-dark" aria-labelledby="bandCtaTitle">
       <div class="container px-custom">
         <div class="band-cta__inner">
           <h3 id="bandCtaTitle" class="band-cta__title">
-            Soluciones legales integrales,<span> en todo el país.</span>
+            Comprehensive legal solutions,<span> nationwide.</span>
           </h3>
-          <!-- Usá tu componente de botón reutilizable -->
-          <a href="contacto.html" class="btn-cta">Contactanos</a>
+          <!-- Reusable CTA button component -->
+          <a href="contacto_en.html" class="btn-cta">Let’s talk</a>
         </div>
       </div>
     </section>
 
-    <!-- === EL ESTUDIO === -->
-    <section id="estudio" class="estudio">
-      <!-- Fila superior: texto + botón -->
+    <!-- === THE FIRM === -->
+    <section id="firm" class="estudio">
+      <!-- Upper row: text + button -->
       <div class="container px-custom mt-5">
         <div class="row mt-3 py-5" data-aos="fade-up" data-aos-duration="1000">
           <div class="col-12">
-            <h2 class="section-title mb-4">El Estudio</h2>
+            <h2 class="section-title mb-4">The Firm</h2>
             <p class="section-intro mb-4">
-              En <strong>BRVSCU</strong> asesoramos a empresas e instituciones en las principales áreas del derecho,
-              combinando <strong>experiencia</strong> técnica, <strong>visión</strong> estratégica y compromiso con los resultados.
+              At <strong>BRVSCU</strong>, we advise companies and institutions in the main areas of law,
+              combining technical <strong>expertise</strong>, strategic <strong>vision</strong> and a strong commitment to results.
             </p>
-
             <p class="section-intro mb-2">
-              Con más de 10 años de <strong>trayectoria</strong>, nuestro equipo de <strong>profesionales</strong> combinan trayectoria judicial, conocimiento práctico y entusiasmo para brindar soluciones legales integrales,
-              acompañando los desafíos más complejos con ética, precisión y cercanía.
+              With over 10 years of <strong>experience</strong>, our team of <strong>professionals</strong> provides comprehensive legal solutions,
+              addressing complex challenges with <strong>ethics</strong>, <strong>precision</strong> and <strong>proximity</strong>.
             </p>
 
-            <a href="equipo.html" class="btn-cta">Conocer al equipo</a>
+            <a href="equipo_en.html" class="btn-cta">Contact us</a>
           </div>
         </div>
 
-        <!-- Fila inferior: imagen con efecto de aparición -->
+        <!-- Lower row: image with fade-in effect -->
         <div class="row mt-5" data-aos="fade-up" data-aos-duration="1000">
           <div class="col-12">
             <figure class="estudio-img-wrapper">
-              <img src="/images/todos.jpg" class="img-fluid rounded" alt="De izq. a der.: Agustín Medrano, Sebastián Eduardo Torres, Emilio Rojo Vivot, Francisco Diego Uriburu, Carolina Canziani Aguilar, Francisco Berdaguer, Rómulo Rojo Vivot, Germán Silvero, Lucía Rojo Vivot y Julio Quinto Benites" loading="lazy" decoding="async">
+              <img src="/images/todos.jpg" class="img-fluid rounded" alt="BRVSCU Team" loading="lazy" decoding="async">
             </figure>
           </div>
         </div>
         <div>
-          <p class="caption">De izq. a der.: Agustín Medrano, Sebastián Eduardo Torres, Emilio Rojo Vivot, Francisco Diego Uriburu, Carolina Canziani Aguilar, Francisco Berdaguer, Rómulo Rojo Vivot, Germán Silvero, Lucía Rojo Vivot y Julio Quinto Benites</p>
+          <p class="caption">
+            From left to right: Agustín Medrano, Sebastián Eduardo Torres, Emilio Rojo Vivot, Francisco Diego Uriburu, Carolina Canziani Aguilar, Francisco Berdaguer, Rómulo Rojo Vivot, Germán Silvero, Lucía Rojo Vivot and Julio Quinto Benites
+          </p>
         </div>
       </div>
     </section>
 
-    <!-- === ÁREAS DE PRÁCTICA === -->
+    <!-- === PRACTICE AREAS === -->
     <section id="areas" class="mt-3 py-5 align-items-center bg-light">
-      <div class="container  px-custom"  >
+      <div class="container px-custom">
         <div class="row align-items-center flex-md-row py-5 mb-1" data-aos="fade-up" data-aos-duration="1000">
-          <!-- Texto  -->
+          <!-- Text -->
           <div class="col-12">
-            <h2 class="section-title mb-4">Áreas de práctica</h2>
-            <p >
-              En <strong>BRVSCU</strong> brindamos asesoramiento integral en las principales ramas del <strong>derecho empresarial, civil, comercial, laboral y administrativo.</strong>.
+            <h2 class="section-title mb-4">Practice Areas</h2>
+            <p>
+              At <strong>BRVSCU</strong>, we provide comprehensive legal counsel across the main branches of
+              <strong>corporate, civil, commercial, labor, and criminal law</strong>.
             </p>
-              <p  > Nuestro equipo de <strong>especialistas</strong> interviene en operaciones complejas, litigios, reestructuraciones, contrataciones, defensa de la competencia,
-                seguros, agronegocios y derecho del deporte.
-              </p>
-              <p >  A través de una práctica interdisciplinaria, acompañamos a <strong>empresas y personas</strong> con <strong>soluciones jurídicas</strong> sólidas, estratégicas y ajustadas a cada necesidad.
-              </p>
+            <p>
+              Our team of <strong>specialists</strong> handles complex transactions, litigation, restructurings,
+              contracts, competition and consumer defense, insurance, agribusiness, and sports law.
+            </p>
+            <p>
+              Through an <strong>interdisciplinary approach</strong>, we assist <strong>companies and individuals</strong> with
+              <strong>sound, strategic, and tailored legal solutions</strong> that meet every client’s needs.
+            </p>
           </div>
 
           <div>
-            <a href="areas.html" class="btn-cta ">Ver todas las áreas</a>
+            <a href="areas_en.html" class="btn-cta">See all practice areas</a>
           </div>
         </div>
       </div>
@@ -169,7 +174,10 @@ const currentLocale = Astro.currentLocale ?? "es";
 
   <!-- Footer -->
   <footer class="footer-section text-white text-center py-5">
-    <p class="mb-0">&copy; 2025 | Estudio Jurídico BRVSCU | Diseño y desarrollo por <a href="https://www.linkedin.com/in/mrvivot/">@mrvivot</a></p>
+    <p class="mb-0">
+      &copy; 2025 | BRVSCU Law Firm | Design and development by
+      <a href="https://www.linkedin.com/in/mrvivot/" target="_blank" rel="noopener noreferrer">@mrvivot</a>
+    </p>
   </footer>
 
   <!-- Bootstrap JS bundle (con Popper). Usá la MISMA versión que el CSS -->
