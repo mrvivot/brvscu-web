@@ -1,7 +1,7 @@
 /* Tipografía base y colores */
 body {
-  font-family: Verdana, Geneva, Tahoma, sans-serif; 
-    font-size: 1.3rem;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-size: var(--fs-base);
     line-height: 1.8;
     background-color: #FAFAFA;
     color: #212121; /* gris oscuro para texto */
@@ -9,13 +9,13 @@ body {
     padding: 0;
   }
 
-  
+
   h1, h2, h3, .navbar {
-    font-family: 'Merriweather', serif;
+    font-family: 'EB Garamond', serif;
     font-weight: 700;
     color: #000;
   }
-  
+
 
   .btn, .nav-link {
     font-family: 'Inter', sans-serif;
@@ -23,11 +23,31 @@ body {
     letter-spacing: 0.3px;
   }
 
-  
-  /* Color de acento + sistema de espaciado */
+
+  /* Color de acento + escalas de tipografía y espaciado */
   :root {
     --accent-color: #892A2A;
-    /* Spacing system */
+
+    /* Escala tipográfica (base 16px) */
+    --fs-xs:      0.875rem;  /* 14px */
+    --fs-sm:      1rem;      /* 16px */
+    --fs-base:    1.125rem;  /* 18px — antes 1.3rem en body */
+    --fs-md:      1.25rem;   /* 20px */
+    --fs-lg:      1.75rem;   /* 28px */
+    --fs-xl:      clamp(1.75rem, 3vw, 2.25rem);
+    --fs-2xl:     3rem;      /* sin cambio */
+    --fs-display: clamp(3.2rem, 4.5vw, 5rem); /* sin cambio */
+
+    /* Escala de espaciado (8pt) */
+    --space-3xs: 4px;
+    --space-2xs: 8px;
+    --space-xs:  12px;
+    --space-sm:  16px;
+    --space-3xl: 96px;
+    /* --space-md/lg/xl/2xl viven en los pares mobile/desktop de abajo:
+       --space-title-text = md (mobile) / lg (desktop)
+       --space-text-component = lg (mobile) / xl (desktop)
+       --space-section-py = 2xl (mobile) / 3xl (desktop) */
     --space-title-text:     24px;   /* título → texto (mobile) */
     --space-text-component: 40px;   /* texto → componente (mobile) */
     --space-section-py:     72px;   /* padding vertical de sección (mobile) */
@@ -37,7 +57,7 @@ body {
     :root {
       --space-title-text:     40px;
       --space-text-component: 56px;
-      --space-section-py:     100px;
+      --space-section-py:     var(--space-3xl); /* 96px, antes 100px */
     }
   }
   
@@ -55,8 +75,8 @@ body {
 .btn-cta {
   display: inline-block;
   font-family: 'Inter', sans-serif;
-  font-size: 1.05rem;
-  padding: 0.7rem 2rem;
+  font-size: var(--fs-sm);
+  padding: var(--space-xs) 2rem;
   color:white;               /* texto blanco */
   background-color: #892A2A;
   font-weight: 600;
@@ -91,13 +111,13 @@ body {
   display: inline-block;
   width: 100%;
   font-family: 'Inter', sans-serif;
-  font-size: 1rem;
+  font-size: var(--fs-sm);
   font-weight: 500;
   color: #892A2A;
   background-color: #fff;
   border: 1px solid #eee;      /* ✅ borde sutil para contraste y foco */
   border-radius: 8px;
-  padding: 0.75rem 1rem;
+  padding: var(--space-xs) 1rem;
   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
   transition: transform 0.2s ease, box-shadow 0.2s ease, background-color 0.2s ease;
   cursor: pointer;
@@ -126,14 +146,14 @@ body {
 
 .btn-cta-practica-lg {
   text-align: left;
-  font-size: 0.9rem;
+  font-size: var(--fs-xs);
 }
 
 /* Opcional: versión responsive */
 @media (max-width: 576px) {
   .btn-cta-practica {
-    font-size: 0.95rem;
-    padding: 0.6rem 0.9rem;
+    font-size: var(--fs-sm);
+    padding: var(--space-2xs) var(--space-sm);
   }
 }
 
@@ -176,7 +196,7 @@ body {
 .navbar .nav-link {
     font-family: 'EB Garamond', serif;
     color: #111;
-    font-size: 1.125rem;
+    font-size: var(--fs-base);
     font-weight: 400;
     transition: color 0.2s ease-in-out, border-color 0.2s ease-in-out;
     text-decoration: none;
@@ -326,9 +346,9 @@ body {
 
 /* Título y subtítulo */
 #hero .hero-title {
-font-family: 'Times New Roman', Times, serif;
+font-family: 'EB Garamond', serif;
   font-weight: 700;
-  font-size: clamp(3.2rem, 4.5vw, 5rem);
+  font-size: var(--fs-display);
   line-height: 1.1;
   letter-spacing: 0.2px;
   color: #fafafa;
@@ -344,8 +364,8 @@ font-family: 'Times New Roman', Times, serif;
 /* === Botón CTA dentro del HERO === */
 .hero-cta-btn {
   display: inline-block;
-  font-size: 1.1rem;
-  padding: 0.75rem 1.5rem;
+  font-size: var(--fs-sm);
+  padding: var(--space-xs) 1.5rem;
   background-color: transparent;       /* fondo transparente */
   color: white;                         /* texto blanco */
   border: 2px solid #ffffff;           /* borde bordó */
@@ -435,7 +455,7 @@ font-family: 'Times New Roman', Times, serif;
   font-weight: 700;
   line-height: 1.15;
   letter-spacing: .2px;
-  font-size: clamp(1.6rem, 3vw, 2.25rem);
+  font-size: var(--fs-xl);
   max-width: 60ch;
   position: relative;
 }
@@ -447,7 +467,7 @@ font-family: 'Times New Roman', Times, serif;
   width: 72px;
   height: 3px;
   background: #892A2A;
-  margin-top: .75rem;
+  margin-top: var(--space-xs);
 }
 
 .band-cta__title span {
@@ -493,17 +513,17 @@ font-family: 'Times New Roman', Times, serif;
 
 /* Base reutilizable para todos los títulos de sección */
 .section-title {
-  font-family: 'Times New Roman', Times, serif;
+  font-family: 'EB Garamond', serif;
   font-weight: 700;
   letter-spacing: .2px;
   line-height: 1.1;
-  font-size: 3rem;
-  margin: 0 0 .75rem 0;
+  font-size: var(--fs-2xl);
+  margin: 0 0 var(--space-xs) 0;
 }
 
 /* Base reutilizable para el párrafo intro */
 .section-intro {
-  font-size: 1.1rem;
+  font-size: var(--fs-md);
   line-height: 1.7;
   color: #111;
 }
@@ -549,7 +569,7 @@ font-family: 'Times New Roman', Times, serif;
 
 .estudio .section-intro {
 
-  font-size: 1.25rem; /* 18px */
+  font-size: var(--fs-md);
   line-height: 1.8;
   color: #444;
 
@@ -602,15 +622,15 @@ font-family: 'Times New Roman', Times, serif;
 .card-socio .card-body {
   display: flex;
   flex-direction: column;
-  gap: .2rem;
-  padding: .75rem 1rem 1rem;
+  gap: var(--space-3xs);
+  padding: var(--space-xs) var(--space-sm) var(--space-sm);
   flex: 1;
 }
 
 .card-socio .card-title {
-  font-size: 1.05rem;
+  font-size: var(--fs-md);
   line-height: 1.25;
-  margin: .25rem 0 .15rem;
+  margin: var(--space-3xs) 0 var(--space-3xs);
   display: -webkit-box;
   -webkit-box-orient: vertical;
   overflow: hidden;
@@ -618,7 +638,7 @@ font-family: 'Times New Roman', Times, serif;
 }
 
 .card-socio .card-subtitle {
-  font-size: .95rem;
+  font-size: var(--fs-sm);
   color: #555;
   margin: 0;
 }
@@ -668,12 +688,12 @@ font-family: 'Times New Roman', Times, serif;
 .section-title-contacto { color: #fff; }
 
 .contacto-list li {
-  font-size: 1.05rem;
+  font-size: var(--fs-sm);
   line-height: 1.6;
 }
 
 .contacto-icon {
-  font-size: 1.25rem;
+  font-size: var(--fs-md);
   color: #fff;                /* para contraste en fondo oscuro */
   margin-top: 2px;
 }
@@ -736,15 +756,15 @@ font-family: 'Times New Roman', Times, serif;
 
 /* Mantener consistencia de márgenes laterales (usa tu px-custom global) */
 .px-custom {
-  padding-left: 100px; 
-  padding-right: 100px; 
+  padding-left: var(--space-3xl); /* 96px, antes 100px */
+  padding-right: var(--space-3xl);
 }
 
 /* Afina padding en pantallas chicas */
 @media (max-width: 576px) {
   .px-custom {
-    padding-left: 1rem !important;
-    padding-right: 1rem !important;
+    padding-left: var(--space-sm) !important;
+    padding-right: var(--space-sm) !important;
   }
 }
 
@@ -761,13 +781,13 @@ font-family: 'Times New Roman', Times, serif;
 }
 
 .modal-title {
-  font-family: 'Times New Roman', Times, serif;
+  font-family: 'EB Garamond', serif;
   font-weight: 700;
 }
 
 @media (max-width: 576px) {
   .practice-btn {
-    font-size: 0.85rem;
+    font-size: var(--fs-xs);
   }
 
 
@@ -776,12 +796,12 @@ font-family: 'Times New Roman', Times, serif;
 
 footer {
   background-color: #111;
-  font-size: 0.9rem;
+  font-size: var(--fs-xs);
 }
 
 
 .card-title {
-  font-size: 1.2rem;
+  font-size: var(--fs-lg);
   font-weight: 400;
 
 }
@@ -816,7 +836,6 @@ footer {
 .modal-body {
   overflow-y: auto;
   padding-right: 1rem;
-  font-family: 'Times New Roman', Times, serif;
 }
 
   
@@ -825,10 +844,10 @@ footer {
 }
 
 .modal-body li {
-  margin-bottom: .35rem;   /* micro ritmo */
+  margin-bottom: var(--space-3xs);   /* micro ritmo */
   line-height: 1.6;
   font-family: Verdana, Geneva, Tahoma, sans-serif;
-  font-size: 0.9rem;
+  font-size: var(--fs-xs);
 }
 
 /* Responsive: quita sticky en mobile */
@@ -844,7 +863,7 @@ footer {
 
 /* Texto dentro de los modales */
 .modal-body p {
- font-size: 0.95rem;
+ font-size: var(--fs-sm);
   line-height: 1.6;
   color: #333;
   margin-bottom: 0.75rem;
@@ -864,7 +883,7 @@ footer {
 }
 
 .caption {
-  font-size: 0.9rem;
+  font-size: var(--fs-xs);
   color: #666666;
   font-weight: 300;
 }
@@ -886,15 +905,15 @@ footer {
 }
 
 .publicaciones .section-title {
-  font-family: 'Times New Roman', Times, serif;
+  font-family: 'EB Garamond', serif;
   font-weight: 700;
-  font-size: clamp(2rem, 4vw, 3rem);
+  font-size: var(--fs-xl);
   line-height: 1.1;
   color: #000;
 }
 
 .publicaciones .section-intro {
-  font-size: 1.15rem;
+  font-size: var(--fs-md);
   line-height: 1.7;
   color: #333;
 }
@@ -924,7 +943,7 @@ footer {
 
 .card-publicacion .card-title {
   font-family: 'EB Garamond', serif;
-  font-size: 1.5rem;
+  font-size: var(--fs-lg);
   font-weight: 600;
   color: #111;
   margin-bottom: 0.5rem;
@@ -933,7 +952,7 @@ footer {
 
 /* Meta: autor, fecha, medio */
 .card-publicacion .card-meta {
-  font-size: 0.85rem;
+  font-size: var(--fs-xs);
   color: #777;
   margin-bottom: 0.75rem;
 }
@@ -944,7 +963,7 @@ footer {
 
 /* (Se mantiene .card-text por si la usás en otros lados) */
 .card-publicacion .card-text {
-  font-size: 0.95rem;
+  font-size: var(--fs-sm);
   color: #555;
   margin-bottom: 1rem;
 }
@@ -954,7 +973,7 @@ footer {
   display: inline-flex;
   align-items: center;
   gap: 0.5rem;
-  font-size: 0.95rem;
+  font-size: var(--fs-sm);
   font-weight: 600;
   color: #892A2A;
   background-color: #fff;
@@ -985,17 +1004,17 @@ footer {
     height: 160px;
   }
   .card-publicacion .card-title {
-    font-size: 1rem;
+    font-size: var(--fs-sm);
   }
 }
 
 @media (max-width: 575.98px) {
   .publicaciones .section-intro {
-    font-size: 1rem;
+    font-size: var(--fs-sm);
   }
   .btn-cta-download {
-    font-size: 0.9rem;
-    padding: 0.45rem 0.9rem;
+    font-size: var(--fs-xs);
+    padding: 0.45rem var(--space-sm);
   }
 }
 
@@ -1014,8 +1033,8 @@ footer {
 /* Afina padding en pantallas chicas */
 @media (max-width: 576px) {
   .px-custom {
-    padding-left: 1rem !important;
-    padding-right: 1rem !important;
+    padding-left: var(--space-sm) !important;
+    padding-right: var(--space-sm) !important;
   }
 }
 

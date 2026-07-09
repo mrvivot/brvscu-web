@@ -573,7 +573,7 @@ La Parte A (metodología) nunca se modifica por proyecto.
 ### Datos del proyecto
 - **Nombre:** Rediseño BRVSCU (estudio jurídico)
 - **Cliente:** BRVSCU Abogados — Berdaguer | Rojo Vivot | Silvero | Canziani | Uriburu
-- **Tipo:** Rediseño visual + técnico completo (migración de stack, no solo restyling)
+- **Tipo:** Modernización técnica + ajustes visuales menores (misma dirección visual, sin rediseño de marca)
 - **URL en producción:** www.brvscu.com.ar
 - **Carpeta de trabajo:** /Users/mrvivot/Desktop/11_Desarrollo_Web/brvscu
 - **Repo:** https://github.com/mrvivot/brvscu-web.git — inicializado, commit inicial pusheado a `main` el 2026-07-09 (55 archivos, sitio en producción sin cambios, pre-migración).
@@ -590,7 +590,38 @@ La Parte A (metodología) nunca se modifica por proyecto.
 - **Control de versiones:** Git local + repo privado en GitHub (pendiente de creación/confirmación).
 
 ### Design system activo
-_Vacío — se define en la fase de Dirección visual: paleta, tipografía, spacing scale, criterio de animaciones/microinteracciones. Todavía no hay tokens definidos._
+
+**Tipografía** — familia única de titulares confirmada: EB Garamond (se retiró Merriweather, que quedaba tapada por Times New Roman y nunca se veía; Times New Roman también se retiró). Inter se mantiene para botones y nav. Escala (base 16px), en `public/styles.css`:
+
+| Token | Valor | Uso |
+|---|---|---|
+| `--fs-xs` | 0.875rem (14px) | texto meta, captions, footer, listas de modal |
+| `--fs-sm` | 1rem (16px) | botones, texto secundario, párrafos de card |
+| `--fs-base` | 1.125rem (18px) | body (antes 1.3rem) |
+| `--fs-md` | 1.25rem (20px) | `.section-intro` (unifica las 3 variantes que había), íconos de contacto |
+| `--fs-lg` | 1.75rem (28px) | `.card-title` (unifica las 3 definiciones que había) |
+| `--fs-xl` | clamp(1.75rem, 3vw, 2.25rem) | `.band-cta__title`, `.publicaciones .section-title` |
+| `--fs-2xl` | 3rem | `.section-title` (sin cambio) |
+| `--fs-display` | clamp(3.2rem, 4.5vw, 5rem) | `.hero-title` (sin cambio) |
+
+Excepción documentada: `.card-socio .card-title` (nombre dentro de la card de equipo) quedó en `--fs-md` (20px) y no en `--fs-lg` (28px) — el layout de esas cards es angosto y ya reserva solo 2 líneas de alto; 28px arriesgaba desbordar nombres largos ("Canziani Aguilar, Carolina"). Pendiente de confirmar visualmente cuando se migre Equipo en Fase 3.
+
+**Espaciado** — escala 8pt en `public/styles.css`, `:root`:
+
+| Token | Valor | Equivalencia con variables existentes |
+|---|---|---|
+| `--space-3xs` | 4px | nuevo |
+| `--space-2xs` | 8px | nuevo |
+| `--space-xs` | 12px | nuevo |
+| `--space-sm` | 16px | nuevo |
+| (md) | 24px / 40px | = `--space-title-text` (mobile/desktop) |
+| (lg) | 40px / 56px | = `--space-text-component` (mobile/desktop) |
+| (2xl/3xl) | 72px / 96px | = `--space-section-py` (mobile/desktop) |
+| `--space-3xl` | 96px | nuevo — reemplaza el valor desktop de `--space-section-py` (antes 100px) |
+
+`.px-custom` (margen lateral) bajó de 100px a 96px por el mismo motivo de alineación a la escala.
+
+Pendiente para Fase 3: aplicar estos mismos tokens cuando se migren Equipo, Áreas, Publicaciones y Contacto — hoy solo están implementados en el CSS global compartido y verificados visualmente en Home.
 
 ### Decisiones tomadas hasta ahora
 - Se descartó Next.js (sobredimensionado para un sitio institucional de 5 páginas) y Eleventy (mismo resultado que Astro, con más fricción de DX).
@@ -600,6 +631,12 @@ _Vacío — se define en la fase de Dirección visual: paleta, tipografía, spac
 - Orden de construcción por página: Home → Áreas de práctica → Equipo → Publicaciones → Contacto → Nav/Footer global.
 - Estructura y CSS se resuelven antes que las animaciones — no migrar contenido y animar en simultáneo.
 - Astro intercepta y bundlea con Vite cualquier `<script src="...">` por defecto, incluso apuntando a CDN externo o a `public/`. Cualquier script que deba cargarse tal cual (Bootstrap bundle, AOS, JS propio en `public/`) necesita la directiva `is:inline`. Confirmado en la POC de Home (2026-07-09).
+
+Decisión: alcance ajustado de "rediseño visual completo" a "modernización técnica con ajustes visuales menores, misma dirección visual actual".
+Alternativas consideradas: rediseño completo desde cero con nuevo sistema de diseño.
+Criterio: pedido explícito del autor/cliente — conservar identidad visual, pulir tipografía y espaciado.
+Trade-off: se resigna un refresh de marca más agresivo, se gana velocidad y menor riesgo de desvío de scope.
+Estado: confirmada (2026-07-09).
 
 ### Research / contexto disponible
 - Sitio en producción relevado: 5-6 páginas HTML estáticas, sin build step, diseño y desarrollo originales del propio Manuel.
@@ -623,6 +660,8 @@ _Vacío — se define en la fase de Dirección visual: paleta, tipografía, spac
 2026-07-09 — Confirmado el stack de animación (Bootstrap 5.3.5 + AOS 2.3.1, `js/main.js` sin lógica custom). Baseline de Lighthouse corrido sobre producción: Performance 68 · Accessibility 98 · Best Practices 96 · SEO 100. Puntos 3 y 4 de próximos pasos quedan resueltos.
 
 2026-07-09 — POC técnica de Astro corrida en rama `astro-migration`: scaffold con plantilla `minimal`, Home migrada a `src/pages/index.astro` manteniendo Bootstrap 5.3.5 + AOS 2.3.1 vía CDN tal cual. Confirmado visualmente idéntico al original con screenshots headless a 1440px (localhost vs producción). Única fricción real: Astro bundlea con Vite cualquier `<script src="...">` por defecto (CDN o `public/`), rompiendo Bootstrap JS y `js/main.js`; se resolvió agregando `is:inline` a esos scripts (ver Decisiones tomadas hasta ahora). POC queda aislada en `astro-migration`, sin mergear a `main`.
+
+2026-07-09 — Fase 1 de ajustes visuales implementada en `public/styles.css` (rama `astro-migration`), a partir del diagnóstico de tipografía/espaciado hecho sobre el CSS de producción: se formalizó una escala tipográfica de 8 tokens (`--fs-xs` a `--fs-display`) y se completó la escala de espaciado de 8pt (`--space-3xs` a `--space-3xl`, agregando los 4 escalones finos que faltaban por debajo de los 3 que ya existían). Se retiró Merriweather (webfont cargada pero nunca visible por especificidad de CSS) y se unificó EB Garamond como única serif de titulares, corrigiendo el bug de especificidad en `.section-title`, `.hero-title`, `.modal-title` y un cuarto caso encontrado durante la implementación (`.publicaciones .section-title`, que redeclaraba Times New Roman). Se consolidaron las 3 variantes de `.section-intro` y las 3 de `.card-title` en un solo tamaño cada una (con una excepción documentada: `.card-socio .card-title` se dejó en `--fs-md` en vez de `--fs-lg` por riesgo de overflow en cards angostas — ver Design system activo). Verificado con screenshot headless a 1440px: jerarquía coherente, sin roturas visuales, cambio percibido como ajuste y no como rediseño.
 
 ---
 
