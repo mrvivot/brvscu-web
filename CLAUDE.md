@@ -576,7 +576,7 @@ La Parte A (metodología) nunca se modifica por proyecto.
 - **Tipo:** Rediseño visual + técnico completo (migración de stack, no solo restyling)
 - **URL en producción:** www.brvscu.com.ar
 - **Carpeta de trabajo:** /Users/mrvivot/Desktop/11_Desarrollo_Web/brvscu
-- **Repo:** no inicializado — confirmado con `git status` el 2026-07-09. Inicializar antes de cualquier cambio de código.
+- **Repo:** https://github.com/mrvivot/brvscu-web.git — inicializado, commit inicial pusheado a `main` el 2026-07-09 (55 archivos, sitio en producción sin cambios, pre-migración).
 
 ### Alcance
 - **Páginas en scope:** Home (`index.html`), Equipo (`equipo.html`), Áreas de práctica (`areas.html`), Publicaciones (`publicaciones.html`), Contacto (`contacto.html`), versión EN (hoy duplicada en `index_en.html`).
@@ -602,19 +602,24 @@ _Vacío — se define en la fase de Dirección visual: paleta, tipografía, spac
 
 ### Research / contexto disponible
 - Sitio en producción relevado: 5-6 páginas HTML estáticas, sin build step, diseño y desarrollo originales del propio Manuel.
-- Baseline de performance/SEO/accesibilidad: **pendiente** — correr Lighthouse/PageSpeed sobre el sitio actual antes de empezar a migrar, para tener punto de comparación.
+- **Baseline de performance/SEO/accesibilidad (2026-07-09, Lighthouse CLI sobre https://www.brvscu.com.ar, Home, headless):** Performance 68 · Accessibility 98 · Best Practices 96 · SEO 100. Reportes completos en `baseline-lighthouse/home.report.json` y `.html`. Referencia obligatoria: la migración a Astro no debería bajar ninguno de estos scores.
+- Stack de animación confirmado: Bootstrap 5.3.5 (CSS + JS bundle, vía CDN jsDelivr) + AOS 2.3.1 — Animate On Scroll (vía CDN unpkg), con atributos `data-aos="fade-up"` en varios bloques de `index.html`. El archivo `js/main.js` propio está vacío (solo un comentario, sin lógica custom). Las transiciones puntuales de hover están resueltas directo en `styles.css` con `transition`, sin `@keyframes` propios.
 - Search Console: revisar si hay acceso, para no perder URLs indexadas en el cutover.
 
 ### Estado actual / próximos pasos
-1. ~~Confirmar si la carpeta ya tiene `.git` inicializado~~ — confirmado: no tiene. Hecho 2026-07-09.
-2. Backup de la carpeta actual + `git init` + repo privado en GitHub (si no existe) — antes de cualquier otro cambio.
-3. Identificar la librería de animación actual del sitio en vivo.
-4. Correr Lighthouse sobre el sitio en producción y guardar el resultado como baseline.
+1. ~~Confirmar si la carpeta ya tiene `.git` inicializado~~ — confirmado: no tenía. Hecho 2026-07-09.
+2. ~~Backup de la carpeta actual + `git init` + repo privado en GitHub~~ — hecho 2026-07-09.
+3. ~~Identificar la librería de animación actual del sitio en vivo~~ — resuelto: Bootstrap 5.3.5 + AOS 2.3.1 (ver Research más arriba). Relevado en otra sesión, confirmado 2026-07-09.
+4. ~~Correr Lighthouse sobre el sitio en producción y guardar el resultado como baseline~~ — hecho 2026-07-09 (ver Research más arriba).
 5. Scaffold de Astro en carpeta nueva + migración de Home como prueba de concepto, antes de comprometerse con el resto del plan.
 
 ## Log de proyecto
 
-2026-07-09 — Se completó la Parte B con el contexto del proyecto BRVSCU. Se confirmó que la carpeta no tiene repo git inicializado.
+2026-07-09 — Se completó la Parte B con el contexto del proyecto BRVSCU. Se confirmó que la carpeta no tenía repo git inicializado.
+
+2026-07-09 — Backup local creado ("Copia de brvscu 3 - pre-git 2026-07-09"). Repo git inicializado, identidad global configurada (Manuel Rojo Vivot <mrvivot@gmail.com>), commit inicial (55 archivos) pusheado a https://github.com/mrvivot/brvscu-web.git rama `main`. Verificado por coincidencia de SHA local/remoto.
+
+2026-07-09 — Confirmado el stack de animación (Bootstrap 5.3.5 + AOS 2.3.1, `js/main.js` sin lógica custom). Baseline de Lighthouse corrido sobre producción: Performance 68 · Accessibility 98 · Best Practices 96 · SEO 100. Puntos 3 y 4 de próximos pasos quedan resueltos.
 
 ---
 
