@@ -1,0 +1,75 @@
+---
+import { getRelativeLocaleUrl } from "astro:i18n";
+
+interface Props {
+  /** Slug de la página actual sin locale, ej. "" para Home, "areas" para Áreas de práctica */
+  path?: string;
+}
+
+const { path = "" } = Astro.props;
+
+const currentLocale = Astro.currentLocale ?? "es";
+const isEn = currentLocale === "en";
+
+const homeUrl = getRelativeLocaleUrl(currentLocale, "");
+const areasUrl = getRelativeLocaleUrl(currentLocale, "areas");
+const esUrl = getRelativeLocaleUrl("es", path);
+const enUrl = getRelativeLocaleUrl("en", path);
+
+const t = isEn
+  ? {
+      logoAlt: "Berdaguer | Rojo Vivot | Silvero | Canziani | Uriburu - Law Firm",
+      team: "Our Team",
+      teamHref: "equipo_en.html",
+      areas: "Practice Areas",
+      publications: "Publications",
+      publicationsHref: "publicaciones_en.html",
+      contact: "Contact us",
+      contactHref: "contacto_en.html",
+    }
+  : {
+      logoAlt: "Berdaguer | Rojo Vivot | Silvero | Canziani | Uriburu - Abogados",
+      team: "Nuestro equipo",
+      teamHref: "equipo.html",
+      areas: "Áreas de práctica",
+      publications: "Publicaciones",
+      publicationsHref: "publicaciones.html",
+      contact: "Contacto",
+      contactHref: "contacto.html",
+    };
+---
+
+<!-- === NAVBAR === -->
+<nav class="navbar navbar-expand-lg fixed-top custom-navbar shadow-sm px-custom">
+  <div class="container-fluid align-items-center justify-content-between">
+    <a class="navbar-brand" href={homeUrl}>
+      <img src="/images/brvscu.png" alt={t.logoAlt} />
+    </a>
+
+    <!-- Toggler para mobile -->
+    <button class="navbar-toggler ms-auto" type="button"
+            data-bs-toggle="collapse" data-bs-target="#navbarNav"
+            aria-controls="navbarNav" aria-expanded="false" aria-label="Menú">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse navbar-collapse-mobile" id="navbarNav">
+      <ul class="navbar-nav ms-auto">
+        <li class="nav-item px-2"><a class="nav-link" href={t.teamHref}>{t.team}</a></li>
+        <li class="nav-item px-2"><a class="nav-link" href={areasUrl}>{t.areas}</a></li>
+        <li class="nav-item px-2"><a class="nav-link" href={t.publicationsHref}>{t.publications}</a></li>
+        <li class="nav-item px-2"><a class="nav-link" href={t.contactHref}>{t.contact}</a></li>
+
+        <li class="nav-item dropdown px-2">
+          <a class="nav-link dropdown-toggle" href="#" id="languageDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            🌐 {isEn ? "EN" : "ES"}
+          </a>
+          <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="languageDropdown">
+            <li><a class="dropdown-item" href={esUrl}>Español</a></li>
+            <li><a class="dropdown-item" href={enUrl}>English</a></li>
+          </ul>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>

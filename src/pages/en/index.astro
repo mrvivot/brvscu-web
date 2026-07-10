@@ -1,76 +1,11 @@
 ---
-import { getRelativeLocaleUrl } from "astro:i18n";
-
-const esUrl = getRelativeLocaleUrl("es");
-const enUrl = getRelativeLocaleUrl("en");
-const currentLocale = Astro.currentLocale ?? "en";
+import Layout from "../../components/Layout.astro";
+import Nav from "../../components/Nav.astro";
+import Footer from "../../components/Footer.astro";
 ---
 
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="description" content="Estudio jurídico BRVSCU. Asesoramiento legal para empresas y personas en civil, comercial, laboral, penal y más." />
-  <title>Berdaguer | Rojo Vivot | Silvero | Canziani | Uriburu - Law Firm</title>
-
-  <!-- Hreflang -->
-  <link rel="canonical" href="https://brvscu.com.ar/en" />
-  <link rel="alternate" href="https://brvscu.com.ar/en" hreflang="en" />
-  <link rel="alternate" href="https://brvscu.com.ar/" hreflang="es" />
-  <link rel="alternate" href="https://brvscu.com.ar/" hreflang="x-default" />
-
-  <!-- Bootstrap CSS (primero) -->
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/css/bootstrap.min.css" rel="stylesheet">
-
-  <!-- Fuentes -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:wght@400;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
-  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
-
-  <!-- Tu CSS (después de Bootstrap para poder sobrescribir) -->
-  <link rel="stylesheet" href="/styles.css">
-
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet">
-</head>
-
-<body>
-  <!-- === NAVBAR === -->
-  <nav class="navbar navbar-expand-lg fixed-top custom-navbar shadow-sm px-custom">
-    <div class="container-fluid align-items-center justify-content-between">
-      <a class="navbar-brand" href="index_en.html">
-        <img src="/images/brvscu.png" alt="Berdaguer | Rojo Vivot | Silvero | Canziani | Uriburu - Law Firm" />
-      </a>
-
-      <!-- Toggler para mobile -->
-      <button class="navbar-toggler ms-auto" type="button"
-              data-bs-toggle="collapse" data-bs-target="#navbarNav"
-              aria-controls="navbarNav" aria-expanded="false" aria-label="Menú">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-
-      <div class="collapse navbar-collapse navbar-collapse-mobile" id="navbarNav">
-        <ul class="navbar-nav ms-auto">
-          <li class="nav-item px-2"><a class="nav-link" href="equipo_en.html">Our Team</a></li>
-          <li class="nav-item px-2"><a class="nav-link" href="areas_en.html">Practice Areas</a></li>
-          <li class="nav-item px-2"><a class="nav-link" href="publicaciones_en.html">Publications</a></li>
-          <li class="nav-item px-2"><a class="nav-link" href="contacto_en.html">Contact us</a></li>
-
-          <li class="nav-item dropdown px-2">
-            <a class="nav-link dropdown-toggle" href="#" id="languageDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-              🌐 {currentLocale === "en" ? "EN" : "ES"}
-            </a>
-            <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="languageDropdown">
-              <li><a class="dropdown-item" href={esUrl}>Español</a></li>
-              <li><a class="dropdown-item" href={enUrl}>English</a></li>
-            </ul>
-          </li>
-        </ul>
-      </div>
-    </div>
-  </nav>
+<Layout title="Berdaguer | Rojo Vivot | Silvero | Canziani | Uriburu - Law Firm" path="">
+  <Nav path="" />
 
   <main>
     <!-- HERO -->
@@ -172,26 +107,5 @@ const currentLocale = Astro.currentLocale ?? "en";
 
   </main>
 
-  <!-- Footer -->
-  <footer class="footer-section text-white text-center py-5">
-    <p class="mb-0">
-      &copy; 2025 | BRVSCU Law Firm | Design and development by
-      <a href="https://www.linkedin.com/in/mrvivot/" target="_blank" rel="noopener noreferrer">@mrvivot</a>
-    </p>
-  </footer>
-
-  <!-- Bootstrap JS bundle (con Popper). Usá la MISMA versión que el CSS -->
-  <script is:inline src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/js/bootstrap.bundle.min.js"></script>
-
-  <!-- (Opcional) tu JS propio, después del bundle -->
-  <script is:inline src="/js/main.js"></script>
-
-  <!-- AOS  -->
-  <script is:inline src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-  <script is:inline>
-    AOS.init();
-  </script>
-
-</body>
-
-</html>
+  <Footer />
+</Layout>

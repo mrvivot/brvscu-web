@@ -1,0 +1,12 @@
+---
+const currentLocale = Astro.currentLocale ?? "es";
+const isEn = currentLocale === "en";
+
+const firmName = isEn ? "BRVSCU Law Firm" : "Estudio Jurídico BRVSCU";
+const designBy = isEn ? "Design and development by" : "Diseño y desarrollo por";
+---
+
+<!-- Footer -->
+<footer class="footer-section text-white text-center py-5">
+  <p class="mb-0">&copy; 2025 | {firmName} | {designBy} <a href="https://www.linkedin.com/in/mrvivot/" target="_blank" rel="noopener noreferrer">@mrvivot</a></p>
+</footer>

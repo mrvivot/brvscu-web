@@ -1,0 +1,71 @@
+---
+import { getRelativeLocaleUrl } from "astro:i18n";
+
+interface Props {
+  title: string;
+  description?: string;
+  /** Slug de la página sin locale, ej. "" para Home, "areas" para Áreas de práctica */
+  path?: string;
+}
+
+const {
+  title,
+  description = "Estudio jurídico BRVSCU. Asesoramiento legal para empresas y personas en civil, comercial, laboral, penal y más.",
+  path = "",
+} = Astro.props;
+
+const currentLocale = Astro.currentLocale ?? "es";
+const siteUrl = "https://brvscu.com.ar";
+const esPath = getRelativeLocaleUrl("es", path);
+const enPath = getRelativeLocaleUrl("en", path);
+const canonicalPath = currentLocale === "en" ? enPath : esPath;
+---
+
+<!DOCTYPE html>
+<html lang={currentLocale}>
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content={description} />
+  <title>{title}</title>
+
+  <!-- Hreflang -->
+  <link rel="canonical" href={siteUrl + canonicalPath} />
+  <link rel="alternate" href={siteUrl + esPath} hreflang="es" />
+  <link rel="alternate" href={siteUrl + enPath} hreflang="en" />
+  <link rel="alternate" href={siteUrl + esPath} hreflang="x-default" />
+
+  <!-- Bootstrap CSS (primero) -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/css/bootstrap.min.css" rel="stylesheet">
+
+  <!-- Fuentes -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:wght@400;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+
+  <!-- Tu CSS (después de Bootstrap para poder sobrescribir) -->
+  <link rel="stylesheet" href="/styles.css">
+
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet">
+</head>
+
+<body>
+  <slot />
+
+  <!-- Bootstrap JS bundle (con Popper). Usá la MISMA versión que el CSS -->
+  <script is:inline src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/js/bootstrap.bundle.min.js"></script>
+
+  <!-- (Opcional) tu JS propio, después del bundle -->
+  <script is:inline src="/js/main.js"></script>
+
+  <!-- AOS  -->
+  <script is:inline src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+  <script is:inline>
+    AOS.init();
+  </script>
+
+</body>
+
+</html>
