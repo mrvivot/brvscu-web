@@ -1,0 +1,782 @@
+---
+import Layout from "../../components/Layout.astro";
+import Nav from "../../components/Nav.astro";
+import Footer from "../../components/Footer.astro";
+---
+
+<Layout title="Berdaguer | Rojo Vivot | Silvero | Canziani | Uriburu - Law Firm" path="areas">
+  <Nav path="areas" />
+
+  <main>
+    <!-- === PRACTICE AREAS === -->
+
+    <section id="areas" class="py-5 my-5">
+      <div class="container px-custom" data-aos="fade-up" data-aos-duration="1000">
+        <h2 class="section-title mt-5 pt-5 mb-3">Practice Areas</h2>
+        <p class="section-intro mb-1">
+          At BRVSCU we provide comprehensive counsel across key areas of business, civil, commercial, and labor law. Our team of specialists handles complex transactions, litigation, restructurings, contracting, antitrust, insurance, agribusiness, and sports law.
+        </p>
+        <p class="section-intro mb-5">
+          Through an interdisciplinary approach, we support companies and individuals with robust, strategic legal solutions tailored to each need.
+        </p>
+
+        <div class="row g-3 mb-5 pb-5" data-aos="fade-up" data-aos-duration="1000">
+
+          <!-- Buttons -->
+          <div class="col-6 col-md-4 col-lg-3">
+            <button class="btn-cta-practica w-100" data-bs-toggle="modal" data-bs-target="#modalContratos">
+              <i class="bi bi-arrows-angle-contract px-2"></i>Contracts
+            </button>
+          </div>
+          <div class="col-6 col-md-4 col-lg-3">
+            <button class="btn-cta-practica w-100" data-bs-toggle="modal" data-bs-target="#modalSocietario">
+              <i class="bi bi-collection px-2"></i>Corporate Law
+            </button>
+          </div>
+          <div class="col-6 col-md-4 col-lg-3">
+            <button class="btn-cta-practica w-100" data-bs-toggle="modal" data-bs-target="#modalConcursal">
+              <i class="bi bi-graph-up px-1"></i>Insolvency &amp; Restructuring
+            </button>
+          </div>
+          <div class="col-6 col-md-4 col-lg-3">
+            <button class="btn-cta-practica w-100" data-bs-toggle="modal" data-bs-target="#modalAdministrativo">
+              <i class="bi bi-diagram-3-fill px-2"></i>Administrative Law
+            </button>
+          </div>
+          <div class="col-6 col-md-4 col-lg-3">
+            <button class="btn-cta-practica w-100" data-bs-toggle="modal" data-bs-target="#modalLaboral">
+              <i class="bi bi-person-workspace px-2"></i>Labor &amp; Employment
+            </button>
+          </div>
+          <div class="col-6 col-md-4 col-lg-3">
+            <button class="btn-cta-practica w-100" data-bs-toggle="modal" data-bs-target="#modalSeguros">
+              <i class="bi bi-safe px-2"></i>Insurance
+            </button>
+          </div>
+          <div class="col-6 col-md-4 col-lg-3">
+            <button class="btn-cta-practica w-100" data-bs-toggle="modal" data-bs-target="#modalInmobiliario">
+              <i class="bi bi-building px-1"></i>Real Estate &amp; Construction
+            </button>
+          </div>
+          <div class="col-6 col-md-4 col-lg-3">
+            <button class="btn-cta-practica w-100" data-bs-toggle="modal" data-bs-target="#modalBancario">
+              <i class="bi bi-bank px-2"></i>Banking Law
+            </button>
+          </div>
+          <div class="col-6 col-md-4 col-lg-3">
+            <button class="btn-cta-practica w-100" data-bs-toggle="modal" data-bs-target="#modalFamilia">
+              <i class="bi bi-people-fill px-2"></i>Family &amp; Inheritance
+            </button>
+          </div>
+          <div class="col-6 col-md-4 col-lg-3">
+            <button class="btn-cta-practica w-100" data-bs-toggle="modal" data-bs-target="#modalCompetencia">
+              <i class="bi bi-shop px-1"></i>Antitrust &amp; Competition
+            </button>
+          </div>
+          <div class="col-6 col-md-4 col-lg-3">
+            <button class="btn-cta-practica w-100" data-bs-toggle="modal" data-bs-target="#modalLitigios">
+              <i class="bi bi-pen px-2"></i>Litigation &amp; Arbitration
+            </button>
+          </div>
+          <div class="col-6 col-md-4 col-lg-3">
+            <button class="btn-cta-practica w-100" data-bs-toggle="modal" data-bs-target="#modalRecupero">
+              <i class="bi bi-credit-card-2-front px-2"></i>Debt Recovery
+            </button>
+          </div>
+          <div class="col-6 col-md-4 col-lg-3">
+            <button class="btn-cta-practica w-100" data-bs-toggle="modal" data-bs-target="#modalConsumidor">
+              <i class="bi bi-bag px-2"></i>Consumer Protection
+            </button>
+          </div>
+          <div class="col-6 col-md-4 col-lg-3">
+            <button class="btn-cta-practica w-100" data-bs-toggle="modal" data-bs-target="#modalDeporte">
+              <i class="bi bi-stopwatch px-2"></i>Sports Law
+            </button>
+          </div>
+          <div class="col-6 col-md-4 col-lg-3">
+            <button class="btn-cta-practica w-100" data-bs-toggle="modal" data-bs-target="#modalAgronegocios">
+              <i class="bi bi-briefcase px-2"></i>Agribusiness
+            </button>
+          </div>
+          <div class="col-6 col-md-4 col-lg-3"><button class="btn-cta-practica w-100 " data-bs-toggle="modal" data-bs-target="#modalEntretenimiento"><i class="bi bi-tv px-1"></i>Entertainment law, telecommunications and audiovisual media</button>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- MODALS -->
+    <div class="modal fade" id="modalContratos" tabindex="-1" aria-labelledby="modalContratosTitle" aria-hidden="true">
+      <div class="modal-dialog modal-lg modal-dialog-centered modal-dialog-scrollable">
+        <div class="modal-content p-4">
+          <div class="modal-header border-0">
+            <h2 class="modal-title">Contracts</h2>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+
+          <div class="modal-body">
+            <h4><strong>Contract design &amp; management</strong></h4>
+            <ul>
+              <li>Strategic structuring of contracts for companies and individuals.</li>
+              <li>Drafting, analysis, review, and negotiation.</li>
+              <li>Amendment or termination: rescission, revocation, and resolution.</li>
+            </ul>
+
+            <h4><strong>Specific commercial contracts</strong></h4>
+            <ul>
+              <li>Concession, franchising, shopping centers, agency, trusts, factoring, and distribution.</li>
+              <li>Supply, licensing, leasing, commodatum, and subletting.</li>
+              <li>Loans, assignment of receivables, pledge of receivables, and security interests.</li>
+            </ul>
+
+            <h4><strong>Guarantee agreements</strong></h4>
+            <ul>
+              <li>Suretyship, letters of comfort or support.</li>
+              <li>Joint and several sureties and benefit of discussion.</li>
+            </ul>
+
+            <h4><strong>Banking &amp; finance contracts</strong></h4>
+            <ul>
+              <li>Deposit, current account, loans, discounting, credit facilities.</li>
+              <li>Safe-deposit boxes, custody of securities, guarantees, and credit cards.</li>
+            </ul>
+
+            <h4><strong>Associative agreements</strong></h4>
+            <ul>
+              <li>Participation agreements.</li>
+              <li>Collaboration groups, temporary business unions, and cooperation consortia.</li>
+            </ul>
+
+            <h4><strong>Domestic &amp; international trade</strong></h4>
+            <ul>
+              <li>Advisory on bills of lading, waybills, bills of exchange, and documentary credits.</li>
+            </ul>
+
+            <h4><strong>Security interests &amp; real rights</strong></h4>
+            <ul>
+              <li>Mortgage and pledge agreements.</li>
+              <li>Cancellation and extinction of real guarantees.</li>
+            </ul>
+
+            <h4><strong>Commercial companies</strong></h4>
+            <ul>
+              <li>Incorporation, dissolution, and liquidation.</li>
+            </ul>
+
+            <h4><strong>Leases &amp; services</strong></h4>
+            <ul>
+              <li>Contracts for works, services, and leases.</li>
+              <li>Assignment, eviction, invoice collection, and contractual disputes.</li>
+            </ul>
+
+            <h4><strong>Sale of goods</strong></h4>
+            <ul>
+              <li>Purchase agreements, exchange, and assignment of rights.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="modal fade" id="modalSocietario" tabindex="-1" aria-labelledby="modalSocietarioTitle">
+      <div class="modal-dialog modal-lg modal-dialog-centered modal-dialog-scrollable">
+        <div class="modal-content p-4">
+          <div class="modal-header border-0">
+            <h2 class="modal-title">Corporate Law</h2>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+
+            <h4><strong>Incorporation &amp; corporate organization</strong></h4>
+            <ul>
+              <li>Company formation.</li>
+              <li>Bylaw reforms and amendments.</li>
+              <li>Shareholders’ agreements advisory.</li>
+              <li>Irrevocable contributions for future share subscriptions.</li>
+            </ul>
+
+            <h4><strong>Foreign companies</strong></h4>
+            <ul>
+              <li>Registration, domestication, and branch openings.</li>
+              <li>Legal representation in Argentina.</li>
+              <li>Review of foreign-origin documentation.</li>
+            </ul>
+
+            <h4><strong>Complex corporate transactions</strong></h4>
+            <ul>
+              <li>M&amp;A / business acquisitions.</li>
+              <li>Due diligence processes.</li>
+              <li>Mergers and demergers.</li>
+              <li>Transfer of equity interests and share deals.</li>
+            </ul>
+
+            <h4><strong>Business collaborations</strong></h4>
+            <ul>
+              <li>Advisory on collaboration agreements.</li>
+              <li>Joint ventures, consortia, and temporary business unions (UTEs).</li>
+            </ul>
+
+            <h4><strong>Corporate governance &amp; disputes</strong></h4>
+            <ul>
+              <li>Judicial and extrajudicial advice in corporate conflicts.</li>
+              <li>Challenges and suspension of shareholders’ resolutions.</li>
+              <li>Liability of directors and officers (derivative and individual actions).</li>
+              <li>Dissolution and liquidation of companies.</li>
+            </ul>
+
+            <h4><strong>Audit &amp; documentation</strong></h4>
+            <ul>
+              <li>Review of corporate books and administrative-accounting records.</li>
+              <li>External audits.</li>
+              <li>Financial statement review.</li>
+            </ul>
+
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="modal fade" id="modalConcursal" tabindex="-1" aria-labelledby="modalConcursalTitle">
+      <div class="modal-dialog modal-lg modal-dialog-centered modal-dialog-scrollable">
+        <div class="modal-content p-4">
+          <div class="modal-header border-0">
+            <h2 class="modal-title">Insolvency &amp; Restructuring</h2>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+
+            <h4><strong>Distress &amp; turnaround advisory</strong></h4>
+            <ul>
+              <li>Comprehensive counsel to companies facing insolvency.</li>
+              <li>Assessment of judicial and out-of-court alternatives.</li>
+            </ul>
+
+            <h4><strong>Reorganization proceedings</strong></h4>
+            <ul>
+              <li>Preparation and filing of reorganization (concurso preventivo).</li>
+              <li>Advice and representation throughout all stages.</li>
+              <li>Out-of-court preventive agreements (APEs).</li>
+            </ul>
+
+            <h4><strong>Creditor representation</strong></h4>
+            <ul>
+              <li>Assistance in claim verification proceedings.</li>
+              <li>Incidental matters: late filings, review, restitution of assets, and more.</li>
+            </ul>
+
+            <h4><strong>Bankruptcy proceedings</strong></h4>
+            <ul>
+              <li>Petitions for bankruptcy and defenses.</li>
+              <li>Representation through lifting, settlement, payment agreements, closure, and conclusion.</li>
+            </ul>
+
+            <h4><strong>Pre-insolvency &amp; insolvency agreements</strong></h4>
+            <ul>
+              <li>Negotiation and formalization with creditors before or during court processes.</li>
+            </ul>
+
+            <h4><strong>Secured claims &amp; real guarantees</strong></h4>
+            <ul>
+              <li>Enforcement of mortgages and pledges.</li>
+              <li>Mortgage cancellation.</li>
+              <li>Protection of creditor and mortgagor rights in insolvency.</li>
+            </ul>
+
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="modal fade" id="modalAdministrativo" tabindex="-1" aria-labelledby="modalAdministrativoTitle">
+      <div class="modal-dialog modal-lg modal-dialog-centered modal-dialog-scrollable">
+        <div class="modal-content p-4">
+          <div class="modal-header border-0">
+            <h2 class="modal-title">Administrative Law</h2>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+
+            <h4><strong>Public procurement</strong></h4>
+            <ul>
+              <li>Advice in public tenders and comprehensive bidding processes.</li>
+              <li>Preparation, filing, and follow-up of bids.</li>
+              <li>Private-initiative tender processes.</li>
+            </ul>
+
+            <h4><strong>Public works &amp; service concessions</strong></h4>
+            <ul>
+              <li>Drafting, negotiation, and management of concession contracts.</li>
+              <li>Contract performance control and price readjustments.</li>
+              <li>Renegotiation with government entities.</li>
+            </ul>
+
+            <h4><strong>Government relations &amp; claims</strong></h4>
+            <ul>
+              <li>Support in the performance of administrative contracts.</li>
+              <li>Claims before public agencies for contractual breaches.</li>
+              <li>Representation in administrative and judicial stages.</li>
+            </ul>
+
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="modal fade" id="modalLaboral" tabindex="-1" aria-labelledby="modalLaboralTitle">
+      <div class="modal-dialog modal-lg modal-dialog-centered modal-dialog-scrollable">
+        <div class="modal-content p-4">
+          <div class="modal-header border-0">
+            <h2 class="modal-title">Labor &amp; Employment</h2>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+
+            <h4><strong>Hiring &amp; termination</strong></h4>
+            <ul>
+              <li>Employment agreements, dismissals, and severance.</li>
+              <li>Hiring and subcontracting of personnel.</li>
+            </ul>
+
+            <h5><strong>Individual &amp; collective disputes</strong></h5>
+            <ul>
+              <li>Advice and representation before SECLO, the Labor Ministry, and in court.</li>
+              <li>Defense of companies and executives in administrative claims (registration, health &amp; safety).</li>
+              <li>Claims for workplace accidents and contingencies.</li>
+            </ul>
+
+            <h5><strong>Union relations</strong></h5>
+            <ul>
+              <li>Representation in negotiations with trade unions.</li>
+              <li>Drafting and management of collective bargaining agreements.</li>
+              <li>Resolution of union conflicts.</li>
+            </ul>
+
+            <h5><strong>Preventive management</strong></h5>
+            <ul>
+              <li>Design and implementation of HR policies with a preventive approach.</li>
+            </ul>
+
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="modal fade" id="modalSeguros" tabindex="-1" aria-labelledby="modalSegurosTitle">
+      <div class="modal-dialog modal-lg modal-dialog-centered modal-dialog-scrollable">
+        <div class="modal-content p-4">
+          <div class="modal-header border-0">
+            <h2 class="modal-title">Insurance</h2>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+
+            <h4><strong>Coverages &amp; policies</strong></h4>
+            <ul>
+              <li>Civil Liability, Surety, Professional Malpractice, Fire, Life, and Product Liability.</li>
+            </ul>
+
+            <h4><strong>Claims assistance</strong></h4>
+            <ul>
+              <li>Legal support in claims handling and settlement.</li>
+              <li>Negotiation and transactional agreements: out of court, in mediation, and litigation.</li>
+            </ul>
+
+            <h4><strong>Judicial representation</strong></h4>
+            <ul>
+              <li>Defense and representation of insurers and insureds before courts.</li>
+            </ul>
+
+            <h4><strong>Audit &amp; risk assessment</strong></h4>
+            <ul>
+              <li>Portfolio audit.</li>
+              <li>Judicial risk assessment and exposure evaluation.</li>
+              <li>Civil liability analysis of the insured.</li>
+            </ul>
+
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="modal fade" id="modalInmobiliario" tabindex="-1" aria-labelledby="modalInmobiliarioTitle">
+      <div class="modal-dialog modal-lg modal-dialog-centered modal-dialog-scrollable">
+        <div class="modal-content p-4">
+          <div class="modal-header border-0">
+            <h2 class="modal-title">Real Estate &amp; Construction</h2>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+
+            <h4><strong>Real estate developments</strong></h4>
+            <ul>
+              <li>Legal structuring of projects: buildings, gated communities, country clubs.</li>
+              <li>Development contracts: financing, mortgages, and enforcement.</li>
+              <li>Advice in public and private bids for real estate projects.</li>
+              <li>Developments regarding private neighborhoods and country clubs.</li>
+
+            </ul>
+
+            <h4><strong>Trusts</strong></h4>
+            <ul>
+              <li>Drafting and structuring of real estate trust agreements.</li>
+            </ul>
+
+            <h4><strong>Construction contracts</strong></h4>
+            <ul>
+              <li>Construction agreements, project contracts, and site management.</li>
+              <li>Temporary business unions (UTEs) for project execution.</li>
+            </ul>
+
+            <h4><strong>Real estate transactions</strong></h4>
+            <ul>
+              <li>Sale, exchange, and lease of rural, urban, and industrial properties.</li>
+              <li>Contracts for works and services.</li>
+            </ul>
+
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="modal fade" id="modalBancario" tabindex="-1" aria-labelledby="modalBancarioTitle">
+      <div class="modal-dialog modal-lg modal-dialog-centered modal-dialog-scrollable">
+        <div class="modal-content p-4">
+          <div class="modal-header border-0">
+            <h2 class="modal-title">Banking Law</h2>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+
+            <h4><strong>Banking contracts</strong></h4>
+            <ul>
+              <li>Deposit, current account, loan, bank discount, and credit facilities.</li>
+              <li>Safe-deposit boxes, custody of securities, and banking guarantees.</li>
+              <li>Loan agreements, assignment of receivables, and pledge of receivables.</li>
+            </ul>
+
+            <h4><strong>Credit cards</strong></h4>
+            <ul>
+              <li>Advisory and representation in credit card–related disputes.</li>
+            </ul>
+
+            <h4><strong>Financial data (Habeas Data)</strong></h4>
+            <ul>
+              <li>Claims for access, rectification, update, or deletion of personal data in financial registries.</li>
+            </ul>
+
+            <h4><strong>Banking liability</strong></h4>
+            <ul>
+              <li>Wrongful inclusion in debtor databases.</li>
+              <li>Identity theft.</li>
+              <li>Damages arising from actions or omissions by financial institutions.</li>
+            </ul>
+
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="modal fade" id="modalAgronegocios" tabindex="-1" aria-labelledby="modalAgronegociosTitle">
+      <div class="modal-dialog modal-lg modal-dialog-centered modal-dialog-scrollable">
+        <div class="modal-content p-4">
+          <div class="modal-header border-0">
+            <h2 class="modal-title">Agribusiness</h2>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+
+            <h4><strong>Legal structuring for the agricultural sector</strong></h4>
+            <ul>
+              <li>Design and implementation of legal structures for sector development.</li>
+              <li>Corporate law and governance advisory.</li>
+              <li>Tax planning and structuring.</li>
+            </ul>
+
+            <h4><strong>Alliances, M&amp;A, and reorganizations</strong></h4>
+            <ul>
+              <li>Joint ventures, transfers of going concerns, and corporate reorganizations.</li>
+              <li>Execution and coordination of due diligence processes.</li>
+            </ul>
+
+            <h4><strong>Labor management in agribusiness</strong></h4>
+            <ul>
+              <li>Analysis of sector-specific labor contingencies.</li>
+              <li>Dispute resolution with distributors and agents.</li>
+            </ul>
+
+            <h4><strong>Regulatory compliance &amp; filings</strong></h4>
+            <ul>
+              <li>Regulatory advisory for the agricultural sector.</li>
+              <li>Representation before agencies such as the Ministry of Agriculture and INASE.</li>
+            </ul>
+
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="modal fade" id="modalCompetencia" tabindex="-1" aria-labelledby="modalCompetenciaTitle">
+      <div class="modal-dialog modal-lg modal-dialog-centered modal-dialog-scrollable">
+        <div class="modal-content p-4">
+          <div class="modal-header border-0">
+            <h2 class="modal-title">Antitrust &amp; Competition</h2>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+
+            <h4><strong>Advisory &amp; compliance</strong></h4>
+            <ul>
+              <li>Legal assistance before the National Antitrust Commission.</li>
+              <li>Implementation of compliance programs.</li>
+            </ul>
+
+            <h4><strong>Concentration transactions</strong></h4>
+            <ul>
+              <li>Advisory, filings, and clearances before the competition authority.</li>
+              <li>Mergers, acquisitions, and competitive impact analysis.</li>
+            </ul>
+
+            <h4><strong>Audits &amp; due diligence</strong></h4>
+            <ul>
+              <li>Legal audits (due diligence) in national and regional transactions.</li>
+              <li>Coordination and review in economic concentration processes.</li>
+            </ul>
+
+            <h4><strong>Defense in proceedings</strong></h4>
+            <ul>
+              <li>Representation in administrative proceedings, court cases, and appeals against agency decisions.</li>
+            </ul>
+
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="modal fade" id="modalLitigios" tabindex="-1" aria-labelledby="modalLitigiosTitle">
+      <div class="modal-dialog modal-lg modal-dialog-centered modal-dialog-scrollable">
+        <div class="modal-content p-4">
+          <div class="modal-header border-0">
+            <h2 class="modal-title">Contentious Matters &amp; Civil Liability</h2>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+
+            <h4><strong>Civil liability &amp; damages</strong></h4>
+            <ul>
+              <li>Advice and litigation in pre-contractual, contractual, and tort liability.</li>
+              <li>Professional liability: medical malpractice, legal malpractice, and others.</li>
+              <li>Liability for traffic, workplace, or sports accidents.</li>
+              <li>Product liability: producers, manufacturers, distributors, and carriers.</li>
+              <li>Eviction and latent defects claims.</li>
+            </ul>
+
+            <h4><strong>Contractual &amp; fiduciary disputes</strong></h4>
+            <ul>
+              <li>Civil and commercial lawsuits related to contracts and obligations.</li>
+              <li>Trusts: breaches, liabilities, and rights of settlors, trustees, beneficiaries, and third parties.</li>
+            </ul>
+
+            <h4><strong>Dispute resolution methods</strong></h4>
+            <ul>
+              <li>Negotiation, mediation, arbitration, and other ADR mechanisms.</li>
+              <li>Domestic and international arbitration.</li>
+              <li>Enforcement of judgments and arbitral awards.</li>
+            </ul>
+
+            <h4><strong>Conflict management &amp; prevention</strong></h4>
+            <ul>
+              <li>Preventive legal audits.</li>
+              <li>Proprietary management model for efficiently handling large litigation portfolios.</li>
+            </ul>
+
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="modal fade" id="modalRecupero" tabindex="-1" aria-labelledby="modalRecuperoTitle">
+      <div class="modal-dialog modal-lg modal-dialog-centered modal-dialog-scrollable">
+        <div class="modal-content p-4">
+          <div class="modal-header border-0">
+            <h2 class="modal-title">Debt Recovery</h2>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+
+            <h4><strong>Collections &amp; enforcement</strong></h4>
+            <ul>
+              <li>Summary and ordinary collections in local currency.</li>
+              <li>Debtor tracking and negotiation for recovery.</li>
+              <li>Interim measures and refinancing agreements.</li>
+              <li>Collection of assigned receivables and instruments (checks, promissory notes, bills, credit invoices, etc.).</li>
+            </ul>
+
+            <h4><strong>Commercial contract recovery</strong></h4>
+            <ul>
+              <li>Claims arising from sale of goods, services, and works contracts.</li>
+              <li>Overdrafts in bank current accounts.</li>
+              <li>Pledge seizures.</li>
+            </ul>
+
+            <h4><strong>Secured credits</strong></h4>
+            <ul>
+              <li>Enforcement of real (mortgage, pledge) and personal guarantees.</li>
+            </ul>
+
+            <h4><strong>Audit &amp; monitoring</strong></h4>
+            <ul>
+              <li>Legal audits and periodic portfolio analysis.</li>
+              <li>Recovery capacity estimates.</li>
+              <li>Monthly reports with progress, segmentation, and diagnostics.</li>
+            </ul>
+
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="modal fade" id="modalConsumidor" tabindex="-1" aria-labelledby="modalConsumidorTitle">
+      <div class="modal-dialog modal-lg modal-dialog-centered modal-dialog-scrollable">
+        <div class="modal-content p-4">
+          <div class="modal-header border-0">
+            <h2 class="modal-title">Consumer Protection</h2>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+
+            <h4><strong>Prevention &amp; compliance</strong></h4>
+            <ul>
+              <li>Advisory on preventing consumer disputes.</li>
+              <li>Drafting of adhesion contracts and general terms.</li>
+              <li>Legal design of sweepstakes and promotions: terms and conditions.</li>
+            </ul>
+
+            <h4><strong>Consumer rights</strong></h4>
+            <ul>
+              <li>Duties to inform, misleading advertising, and mass offers.</li>
+              <li>Claims for defective products, redhibitory defects, and eviction.</li>
+              <li>Contractual breaches and defense in lawsuits.</li>
+            </ul>
+
+            <h4><strong>Proceedings &amp; representation</strong></h4>
+            <ul>
+              <li>Representation in class actions.</li>
+              <li>Negotiations and settlements with consumers and associations.</li>
+              <li>Advocacy before enforcement authorities.</li>
+              <li>Judicial challenges to administrative decisions.</li>
+            </ul>
+
+            <h4><strong>Preventive legal audit</strong></h4>
+            <ul>
+              <li>Risk analysis and regulatory compliance.</li>
+              <li>Review of processes, documentation, and communications.</li>
+            </ul>
+
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="modal fade" id="modalDeporte" tabindex="-1" aria-labelledby="modalDeporteTitle">
+      <div class="modal-dialog modal-lg modal-dialog-centered modal-dialog-scrollable">
+        <div class="modal-content p-4">
+          <div class="modal-header border-0">
+            <h2 class="modal-title">Sports Law</h2>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+
+            <h4><strong>Contracts &amp; legal representation</strong></h4>
+            <ul>
+              <li>Negotiation of contracts with clubs, representatives, and sponsors.</li>
+              <li>Legal advisory to players, professionals, and agents.</li>
+              <li>Drafting and management of advertising and sponsorship agreements.</li>
+            </ul>
+
+            <h4><strong>Sports rights &amp; licensing</strong></h4>
+            <ul>
+              <li>Assignment of broadcasting rights, licensing, and sports marketing.</li>
+              <li>Legal assistance in sports entertainment activities.</li>
+            </ul>
+
+            <h4><strong>Proceedings before sports bodies</strong></h4>
+            <ul>
+              <li>Representation before national and international sports organizations.</li>
+            </ul>
+
+            <h4><strong>Crisis &amp; insolvency</strong></h4>
+            <ul>
+              <li>Legal assistance in cases of insolvency of sports entities.</li>
+            </ul>
+
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="modal fade" id="modalFamilia" tabindex="-1" aria-labelledby="modalFamiliaTitle">
+      <div class="modal-dialog modal-lg modal-dialog-centered modal-dialog-scrollable">
+        <div class="modal-content p-4">
+          <div class="modal-header border-0">
+            <h2 class="modal-title">Family &amp; Inheritance</h2>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+
+            <h4><strong>Family advisory &amp; dispute resolution</strong></h4>
+            <ul>
+              <li>Resolution of family disputes.</li>
+              <li>Restructuring of family businesses and foundations.</li>
+            </ul>
+
+            <h4><strong>Estate planning &amp; transfer</strong></h4>
+            <ul>
+              <li>Succession planning.</li>
+              <li>Wills, lifetime gifts, and partition by agreement.</li>
+              <li>Planning intergenerational transfer of wealth.</li>
+            </ul>
+
+            <h4><strong>Probate &amp; conflicts</strong></h4>
+            <ul>
+              <li>Probate proceedings: testate and intestate.</li>
+              <li>Disputes among heirs and with succession creditors.</li>
+              <li>Drafting and negotiation of partition agreements.</li>
+            </ul>
+
+            <h4><strong>Inheritance-related actions</strong></h4>
+            <ul>
+              <li>Petition for inheritance.</li>
+              <li>Action for reduction of inofficious donations.</li>
+            </ul>
+
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="modal fade" id="modalEntretenimiento" tabindex="-1" aria-labelledby="modalEntretenimientoTitle">
+      <div class="modal-dialog modal-lg modal-dialog-centered modal-dialog-scrollable">
+        <div class="modal-content p-4">
+          <div class="modal-header border-0">
+            <h2 class="modal-title">Entertainment law, telecommunications and audiovisual media</h2>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+          </div>
+          <div class="modal-body">
+
+            <ul>
+              <li>Audiovisual rights purchase agreements..</li>
+              <li>Programming and licensing agreements.</li>
+              <li>Consulting services for content creation and distribution companies (satellite television, cable operators, streaming).</li>
+              <li>Regulatory matters. ENACOM and Competition Authority.</li>
+            </ul>
+
+
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </main>
+
+  <Footer />
+</Layout>
