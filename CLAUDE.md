@@ -681,6 +681,17 @@ Estado: confirmada e implementada (2026-07-09). Verificado con screenshot que el
 
 **Hallazgo pendiente de revisión (no corregido en esta sesión):** `.section-title` en peso bold (EB Garamond 700) no renderiza el acento de la "Á" mayúscula a tamaños grandes (confirmado a 2x en Chrome headless — "Áreas de práctica" se ve "Areas de práctica" en el H2, aunque el mismo texto en el nav-link, en peso regular, sí muestra la tilde). El unicode-range de la fuente cubre el carácter (U+00C1), así que no es un problema de subset. No se sabe todavía si es específico de Chrome headless o se replica en navegadores reales. Afecta a Home y a Áreas de práctica (cualquier `.section-title` con vocal mayúscula acentuada). Pendiente: confirmar en un navegador real antes de decidir si se ajusta el font-weight, se prueba otro build de EB Garamond, o se documenta como excepción.
 
+2026-07-12 — Migradas las 3 páginas restantes (ES + EN) usando Layout/Nav/Footer y los tokens de Fase 1: `equipo.astro` (11 socios + 11 modales, foto grupal), `publicaciones.astro` (12 cards), `contacto.astro` (5 ítems de lista + mapa). Paridad de contenido verificada por conteo contra los `.html` originales en las tres páginas, ES y EN — coincide exactamente en todos los casos. `Nav.astro` actualizado: Equipo, Publicaciones y Contacto ya resuelven a `/equipo`, `/publicaciones`, `/contacto` (y sus `/en/...`) en vez de a los `.html` legacy — con esto los 4 links principales del Nav quedan sobre rutas reales de Astro. Se copió `pdf/` a `public/pdf/` (no existía todavía; los links de descarga de Publicaciones lo necesitaban). No reapareció el bug de especificidad Times New Roman/EB Garamond en estas tres páginas (ya estaba completamente resuelto en `styles.css` desde Fase 1; estas páginas no agregan overrides propios).
+
+Hallazgos de contenido (no de diseño) encontrados durante la migración, preservados tal cual en el `.astro` sin corregir:
+- `contacto.html`/`contacto_en.html` no tienen formulario de contacto — solo lista de datos + mapa. Se migró tal cual; no se inventó un form (eso es Fase 4, cuando además haya que decidir a qué servicio conectarlo).
+- El modal de Silvero en Equipo (ES y EN) tiene un párrafo de LinkedIn duplicado con el link de Francisco Berdaguer (`equipo.html:419` / `equipo_en.html:321`), en vez de un segundo dato propio de Silvero. Posible copy-paste error del original. Pendiente de que Manuel decida qué corresponde ahí antes de corregirlo.
+- Corregido durante la migración (bugs de transcripción, no de diseño): un `</i>` duplicado en la card 1 de Publicaciones ES; y el botón "Contact us" de la banda CTA en Publicaciones EN, que apuntaba a `contacto.html` (español) en vez de `contacto_en.html`.
+
+**Pendientes para Fase 3.5 (revisión de detalle):**
+- Ninguno nuevo detectado en esta migración — las 3 páginas migradas no mostraron espaciados/márgenes llamativos más allá de lo ya heredado del CSS de producción.
+- Sigue pendiente de Fase 1: confirmar en navegador real el bug de la tilde en `.section-title` bold (ver hallazgo arriba).
+
 ---
 
 *UX/UI Designer Skill v1.0 · Manuel Rojo Vivot · 2026*  

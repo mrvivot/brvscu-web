@@ -13,6 +13,9 @@ const isEn = currentLocale === "en";
 
 const homeUrl = getRelativeLocaleUrl(currentLocale, "");
 const areasUrl = getRelativeLocaleUrl(currentLocale, "areas");
+const teamUrl = getRelativeLocaleUrl(currentLocale, "equipo");
+const publicationsUrl = getRelativeLocaleUrl(currentLocale, "publicaciones");
+const contactUrl = getRelativeLocaleUrl(currentLocale, "contacto");
 const esUrl = getRelativeLocaleUrl("es", path);
 const enUrl = getRelativeLocaleUrl("en", path);
 
@@ -20,22 +23,16 @@ const t = isEn
   ? {
       logoAlt: "Berdaguer | Rojo Vivot | Silvero | Canziani | Uriburu - Law Firm",
       team: "Our Team",
-      teamHref: "equipo_en.html",
       areas: "Practice Areas",
       publications: "Publications",
-      publicationsHref: "publicaciones_en.html",
       contact: "Contact us",
-      contactHref: "contacto_en.html",
     }
   : {
       logoAlt: "Berdaguer | Rojo Vivot | Silvero | Canziani | Uriburu - Abogados",
       team: "Nuestro equipo",
-      teamHref: "equipo.html",
       areas: "Áreas de práctica",
       publications: "Publicaciones",
-      publicationsHref: "publicaciones.html",
       contact: "Contacto",
-      contactHref: "contacto.html",
     };
 ---
 
@@ -55,10 +52,10 @@ const t = isEn
 
     <div class="collapse navbar-collapse navbar-collapse-mobile" id="navbarNav">
       <ul class="navbar-nav ms-auto">
-        <li class="nav-item px-2"><a class="nav-link" href={t.teamHref}>{t.team}</a></li>
+        <li class="nav-item px-2"><a class="nav-link" href={teamUrl}>{t.team}</a></li>
         <li class="nav-item px-2"><a class="nav-link" href={areasUrl}>{t.areas}</a></li>
-        <li class="nav-item px-2"><a class="nav-link" href={t.publicationsHref}>{t.publications}</a></li>
-        <li class="nav-item px-2"><a class="nav-link" href={t.contactHref}>{t.contact}</a></li>
+        <li class="nav-item px-2"><a class="nav-link" href={publicationsUrl}>{t.publications}</a></li>
+        <li class="nav-item px-2"><a class="nav-link" href={contactUrl}>{t.contact}</a></li>
 
         <li class="nav-item dropdown px-2">
           <a class="nav-link dropdown-toggle" href="#" id="languageDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
