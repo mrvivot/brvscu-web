@@ -1,6 +1,16 @@
+html {
+  scroll-behavior: smooth;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+}
+
 /* Tipografía base y colores */
 body {
-  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  font-family: 'Inter', sans-serif;
     font-size: var(--fs-base);
     line-height: 1.8;
     background-color: #FAFAFA;
@@ -210,11 +220,10 @@ body {
     margin-right: 0;
   }
 
-  /* Hover: color de acento + línea inferior bordó */
+  /* Hover: solo transición de color, sin línea inferior ni underline */
   .navbar .nav-link:hover {
     color: #892A2A;
     text-decoration: none;
-    border-bottom-color: #892A2A;
   }
   
   /* Navbar layout fix: evita que los links se desplacen al hacer hover */
@@ -304,7 +313,7 @@ body {
 /* ==== HERO ESTÁTICO ==== */
 #hero.hero-static {
   position: relative;
-  height: 75vh; /* Deja lugar para la navbar */
+  height: 100vh; /* pantalla completa; la navbar fixed queda superpuesta arriba */
   width: 100%;
   overflow: hidden;
 }
@@ -321,27 +330,26 @@ body {
   z-index: 1;
 }
 
-/* Overlay para mejorar contraste del texto */
+/* Overlay para mejorar contraste del texto: más oscuro hacia abajo (donde vive el texto), más liviano hacia arriba */
 #hero .hero-overlay {
   position: absolute;
   inset: 0;
   background: linear-gradient(
-    90deg,
-    rgba(0, 0, 0, 0.65) 0%,
-    rgba(0, 0, 0, 0.45) 45%,
-    rgba(0, 0, 0, 0.25) 100%
+    180deg,
+    rgba(0, 0, 0, 0.10) 0%,
+    rgba(0, 0, 0, 0.32) 50%,
+    rgba(0, 0, 0, 0.55) 100%
   );
   z-index: 2;
 }
 
-/* Contenido del hero */
+/* Contenido del hero: centrado horizontalmente */
 #hero .hero-copy {
   position: relative;
   z-index: 3;
   color: #FAFAFA;
-  max-width: 800px;
-  padding-left: 100px;
-  padding-right: 100px;
+  max-width: 900px;
+  text-align: center;
 }
 
 /* Título y subtítulo */
@@ -355,9 +363,42 @@ font-family: 'EB Garamond', serif;
 }
 
 #hero .hero-subtitle {
-  font-size: 2rem;
+  font-size: var(--fs-lg);
   font-weight: 400;
+  line-height: 1.4;
   color: #fafafa;
+}
+
+/* Indicador de scroll hacia la siguiente sección */
+#hero .hero-scroll-indicator {
+  position: absolute;
+  bottom: 32px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 3;
+  color: #fafafa;
+  font-size: 1.75rem;
+  line-height: 1;
+  opacity: 0.85;
+  transition: opacity 0.2s ease, color 0.2s ease;
+  animation: heroScrollBounce 2s ease-in-out infinite;
+}
+
+#hero .hero-scroll-indicator:hover,
+#hero .hero-scroll-indicator:focus-visible {
+  opacity: 1;
+  color: var(--accent-color);
+}
+
+@keyframes heroScrollBounce {
+  0%, 100% { transform: translateX(-50%) translateY(0); }
+  50% { transform: translateX(-50%) translateY(8px); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  #hero .hero-scroll-indicator {
+    animation: none;
+  }
 }
 
 
@@ -846,7 +887,7 @@ footer {
 .modal-body li {
   margin-bottom: var(--space-3xs);   /* micro ritmo */
   line-height: 1.6;
-  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  font-family: 'Inter', sans-serif;
   font-size: var(--fs-xs);
 }
 
@@ -867,7 +908,7 @@ footer {
   line-height: 1.6;
   color: #333;
   margin-bottom: 0.75rem;
-  font-family: Verdana, Geneva, Tahoma, sans-serif; /* mantiene coherencia con el resto del sitio */
+  font-family: 'Inter', sans-serif; /* mantiene coherencia con el resto del sitio */
 }
 
 /* Opcional: enlaces dentro del modal */
