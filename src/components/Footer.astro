@@ -2,11 +2,32 @@
 const currentLocale = Astro.currentLocale ?? "es";
 const isEn = currentLocale === "en";
 
-const firmName = isEn ? "BRVSCU Law Firm" : "Estudio Jurídico BRVSCU";
+const firmName = isEn ? "BRVSCU Law Firm" : "BRVSCU Abogados";
 const designBy = isEn ? "Design and development by" : "Diseño y desarrollo por";
+const currentYear = new Date().getFullYear();
+
+const phone = "(+54 11) 4519 8173";
+const email = "secretaria@brvscu.com.ar";
 ---
 
 <!-- Footer -->
 <footer class="footer-section text-white text-center py-5">
-  <p class="mb-0">&copy; 2025 | {firmName} | {designBy} <a href="https://www.linkedin.com/in/mrvivot/" target="_blank" rel="noopener noreferrer">@mrvivot</a></p>
+  <p class="footer-brand">{firmName}</p>
+  <div class="footer-contact">
+    <a class="footer-contact__item" href="tel:+541145198173">
+      <svg class="footer-contact__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <path d="M13.832 16.568a1 1 0 0 0 1.213-.303l.355-.465A2 2 0 0 1 17 15h3a2 2 0 0 1 2 2v3a2 2 0 0 1-2 2A18 18 0 0 1 2 4a2 2 0 0 1 2-2h3a2 2 0 0 1 2 2v3a2 2 0 0 1-.68 1.6l-.468.339a1 1 0 0 0-.288 1.24 12 12 0 0 0 6.26 6.245z" />
+      </svg>
+      {phone}
+    </a>
+    <span class="footer-contact__sep">|</span>
+    <a class="footer-contact__item" href={`mailto:${email}`}>
+      <svg class="footer-contact__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <path d="m22 7-8.991 5.727a2 2 0 0 1-2.009 0L2 7" />
+        <rect x="2" y="4" width="20" height="16" rx="2" />
+      </svg>
+      {email}
+    </a>
+  </div>
+  <p class="footer-copy mb-0">&copy; {currentYear} | {designBy} <a href="https://www.linkedin.com/in/mrvivot/" target="_blank" rel="noopener noreferrer">@mrvivot</a></p>
 </footer>

@@ -39,6 +39,11 @@ body {
     --accent-color: #892A2A;
     --color-bg-alt: #F6F6F6;
 
+    /* Elevación — unifica los valores ya usados en .card-socio, .card-publicacion
+       y .btn-cta-practica, antes ligeramente distintos entre sí */
+    --shadow-sm: 0 2px 6px rgba(0, 0, 0, 0.08);
+    --shadow-md: 0 10px 24px rgba(0, 0, 0, 0.15);
+
     /* Escala tipográfica (base 16px) */
     --fs-xs:      0.875rem;  /* 14px */
     --fs-sm:      1rem;      /* 16px */
@@ -97,6 +102,7 @@ body {
   cursor: pointer;
   z-index: 2;
   border-radius: 8px;
+  box-shadow: var(--shadow-sm);
 }
 
 
@@ -147,7 +153,7 @@ body {
   border: 1px solid #eee;      /* ✅ borde sutil para contraste y foco */
   border-radius: 8px;
   padding: var(--space-xs) 1rem;
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+  box-shadow: var(--shadow-sm);
   transition: transform 0.2s ease, box-shadow 0.2s ease, background-color 0.2s ease;
   cursor: pointer;
 }
@@ -155,7 +161,7 @@ body {
 .btn-cta-practica:hover,
 .btn-cta-practica:focus {
   transform: translateY(-5px);
-  box-shadow: 0 10px 20px rgba(0,0,0,0.18);
+  box-shadow: var(--shadow-md);
   background-color: #f8f8f8;
   color: #892a2a;
   text-decoration: none;
@@ -164,7 +170,7 @@ body {
 
 .btn-cta-practica:active {
   transform: translateY(0);
-  box-shadow: 0 2px 6px rgba(0,0,0,0.08);
+  box-shadow: var(--shadow-sm);
   background-color: #efefef;
 }
 
@@ -199,7 +205,7 @@ body {
     right: 0;
     background-color: #ffffff;
     z-index: 1000;
-    border-bottom: 1px solid #e0e0e0;
+    box-shadow: var(--shadow-sm);
   }
 
  .navbar .navbar-brand {
@@ -482,30 +488,31 @@ font-family: 'EB Garamond', serif;
 /* ==== CTA BAND mejorada ==== */
 .band-cta {
   position: relative;
-
+  background: #111; /* mismo tono que el footer — confirmado por computed style: rgb(17,17,17) */
   padding-block: clamp(2rem, 4vw, 4rem);
-  border-top: 4px solid #892A2A; /* acento de marca */
- 
   overflow: hidden;
-}
-
-.band-cta::before {
-  /* textura sutil para profundidad */
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: radial-gradient(1200px 300px at 10% 0%, rgba(255,255,255,0.06), transparent 60%),
-              radial-gradient(800px 200px at 90% 100%, rgba(255,255,255,0.04), transparent 60%);
-  pointer-events: none;
 }
 
 .band-cta__inner {
   display: flex;
-  align-items:baseline; /* 🔹 centra verticalmente h3 y el botón */
-  justify-content: space-between; /* o space-between si querés separarlos */
-  gap: 2rem; /* espacio entre el texto y el botón */
-  flex-wrap: wrap; /* permite que se apilen en mobile */
+  align-items: center;
+  justify-content: space-between;
+  gap: 2rem;
+  flex-wrap: wrap;
   text-align: center;
+}
+
+/* Variante A: columna, título arriba centrado, botón debajo */
+.band-cta--stacked .band-cta__inner {
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-text-component);
+  text-align: center;
+}
+
+.band-cta--stacked {
+  padding-top: calc(clamp(2rem, 4vw, 4rem) + var(--space-sm));
 }
 
 .band-cta__title {
@@ -520,18 +527,24 @@ font-family: 'EB Garamond', serif;
   position: relative;
 }
 
+.band-cta__title span {
+  color: #eaeaea; /* leve contraste para la segunda frase */
+}
+
+/* Misma línea de firma que .section-title (replicada, no se agrega la clase acá
+   para no heredar su font-size/margin propios — el h3 ya tiene los suyos ajustados) */
 .band-cta__title::after {
-  /* subrayado de acento corto */
   content: "";
   display: block;
-  width: 72px;
+  width: 60px;
   height: 3px;
-  background: #892A2A;
+  background: var(--accent-color);
   margin-top: var(--space-xs);
 }
 
-.band-cta__title span {
-  color: #eaeaea; /* leve contraste para la segunda frase */
+/* Variante columna: título centrado → la línea de firma también centrada */
+.band-cta--stacked .band-cta__title::after {
+  margin-inline: auto;
 }
 
 
@@ -564,9 +577,6 @@ font-family: 'EB Garamond', serif;
     justify-content: center;
     text-align: center;
   }
-  .band-cta__title::after {
-    margin-inline: auto;
-  }
 }
 
 
@@ -579,6 +589,16 @@ font-family: 'EB Garamond', serif;
   line-height: 1.1;
   font-size: var(--fs-2xl);
   margin: 0 0 var(--space-xs) 0;
+}
+
+/* Línea de firma: acento de marca automático en todo título de sección del sitio */
+.section-title::after {
+  content: "";
+  display: block;
+  width: 60px;
+  height: 3px;
+  background: var(--accent-color);
+  margin-top: var(--space-xs);
 }
 
 /* Base reutilizable para el párrafo intro */
@@ -686,12 +706,12 @@ font-family: 'EB Garamond', serif;
   border-radius: 8px;
   transition: transform 0.25s ease, box-shadow 0.25s ease;
   will-change: transform, box-shadow;
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+  box-shadow: var(--shadow-sm);
 }
 
 .card-socio:hover {
   transform: translateY(-6px);
-  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.15);
+  box-shadow: var(--shadow-md);
 }
 
 .card-socio .card-img-top {
@@ -888,6 +908,57 @@ footer {
   font-size: var(--fs-xs);
 }
 
+/* Nivel 1: nombre del estudio, con peso visual real (no fine print) */
+.footer-brand {
+  font-family: 'EB Garamond', serif;
+  font-weight: 700;
+  font-size: var(--fs-lg);
+  color: #fff;
+  margin-bottom: var(--space-sm);
+}
+
+/* Nivel 2: teléfono + email */
+.footer-contact {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  font-size: var(--fs-sm);
+  font-weight: 400;
+  margin-bottom: var(--space-sm);
+}
+
+.footer-contact__item {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  color: rgba(255, 255, 255, 0.85);
+  text-decoration: none;
+}
+
+.footer-contact__icon {
+  width: 15px;
+  height: 15px;
+  color: rgba(255, 255, 255, 0.6);
+  flex-shrink: 0;
+}
+
+.footer-contact__item:hover,
+.footer-contact__item:focus-visible {
+  text-decoration: underline;
+}
+
+.footer-contact__sep {
+  color: rgba(255, 255, 255, 0.35);
+}
+
+/* Nivel 3: copyright, el más chico/liviano */
+.footer-copy {
+  font-size: var(--fs-xs);
+  color: rgba(255, 255, 255, 0.65);
+}
+
 
 .card-title {
   font-size: var(--fs-lg);
@@ -1056,11 +1127,12 @@ footer {
   border-radius: 8px;
   overflow: hidden;
   transition: all 0.3s ease;
+  box-shadow: var(--shadow-sm); /* reemplaza el .shadow-sm de Bootstrap del markup, más liviano */
 }
 
 .card-publicacion:hover {
   transform: translateY(-5px);
-  box-shadow: 0 10px 24px rgba(0,0,0,0.12);
+  box-shadow: var(--shadow-md);
 }
 
 .card-publicacion .card-img-top {
