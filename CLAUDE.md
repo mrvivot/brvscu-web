@@ -591,6 +591,12 @@ La Parte A (metodología) nunca se modifica por proyecto.
 
 ### Design system activo
 
+**Color** — token único agregado hasta ahora (el resto de los colores del sitio siguen hardcodeados, pendiente de auditoría completa):
+
+| Token | Valor | Uso |
+|---|---|---|
+| `--color-bg-alt` | `#F6F6F6` | Fondo gris claro alterno de sección (`.estudio`, `#areas` en Home) — reemplaza el hardcode propio de `.estudio` y la clase `bg-light` de Bootstrap (`#f8f9fa`, un gris ligeramente distinto) que usaba Áreas de práctica. Antes del token, las dos secciones usaban grises técnicamente diferentes aunque visualmente parecidos; verificado con computed style que ahora ambas resuelven a `rgb(246, 246, 246)` exacto. |
+
 **Tipografía** — familia única de titulares confirmada: EB Garamond (se retiró Merriweather, que quedaba tapada por Times New Roman y nunca se veía; Times New Roman también se retiró). Inter se mantiene para botones y nav. Escala (base 16px), en `public/styles.css`:
 
 | Token | Valor | Uso |

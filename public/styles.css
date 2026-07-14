@@ -37,6 +37,7 @@ body {
   /* Color de acento + escalas de tipografía y espaciado */
   :root {
     --accent-color: #892A2A;
+    --color-bg-alt: #F6F6F6;
 
     /* Escala tipográfica (base 16px) */
     --fs-xs:      0.875rem;  /* 14px */
@@ -114,6 +115,24 @@ body {
   transform: translateY(0);
   box-shadow: 0 1px 4px rgba(137, 42, 42, 0.2);
   background-color: #4e1818;
+}
+
+/* === Link CTA: versión liviana para acciones secundarias (no conversión) === */
+.link-cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  color: var(--accent-color);
+  font-family: 'Inter', sans-serif;
+  font-weight: 600;
+  font-size: var(--fs-sm);
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.link-cta:hover,
+.link-cta:focus-visible {
+  text-decoration: underline;
 }
 
 
@@ -593,8 +612,36 @@ font-family: 'EB Garamond', serif;
 
 /* ===== EL ESTUDIO (layout 2 filas) ===== */
 .estudio {
-  background: #f6f6f6;
+  background: var(--color-bg-alt);
   padding-block: var(--space-section-py);
+}
+
+/* Foto grande a ancho completo: radius más notorio que botones/cards (16px vs 8px) por escala,
+   más sombra sutil para darle relieve — sin tocar la utilidad .rounded de Bootstrap global.
+   El shadow va en el <figure>, no en el <img>: el <img> tiene overflow:clip implícito del
+   user-agent (para que su propio border-radius recorte el raster correctamente), y ese clip
+   se comía la sombra. El wrapper no tiene ese clip, así que ahí sí se pinta completa. */
+.estudio-img-wrapper {
+  border-radius: 16px;
+  box-shadow: 0 10px 28px rgba(0, 0, 0, 0.20);
+}
+
+.estudio-img-wrapper img {
+  border-radius: 16px;
+}
+
+/* Gap texto/botón → imagen: mismo token que el resto de las transiciones texto→componente. */
+.estudio .link-cta {
+  margin-bottom: var(--space-text-component);
+}
+
+/* Compensación óptica del gap párrafo → link: el line-height 1.8 de ambos elementos de texto
+   suma "aire" invisible que no existe del lado de la imagen (sin half-leading), por eso a
+   igual margin el gap de arriba se percibía más grande. Se ajusta acá (margin-bottom del
+   párrafo, un margen de bloque real) y no en .link-cta: por ser inline-flex, su margin-top
+   no tiene efecto sobre el hermano de bloque anterior (verificado con CDP). */
+.estudio .section-intro:last-of-type {
+  margin-bottom: calc(var(--space-text-component) - 8px) !important;
 }
 
 /* Elimina doble padding acumulado por Bootstrap utilities internas */
@@ -610,7 +657,7 @@ font-family: 'EB Garamond', serif;
 
 .estudio .section-intro {
 
-  font-size: var(--fs-md);
+  font-size: var(--fs-base);
   line-height: 1.8;
   color: #444;
 
@@ -770,6 +817,7 @@ font-family: 'EB Garamond', serif;
 
 /* ===== #AREAS ===== */
 #areas {
+  background: var(--color-bg-alt);
   padding-block: var(--space-section-py) !important;
   margin-top: 0 !important;
   margin-bottom: 0 !important;

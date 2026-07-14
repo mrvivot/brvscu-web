@@ -28,61 +28,48 @@ import Footer from "../components/Footer.astro";
       </div>
 
       <!-- Indicador de scroll hacia la siguiente sección -->
-      <a href="#bandCtaTitle" class="hero-scroll-indicator" aria-label="Desplazarse a la siguiente sección">
+      <a href="#estudio" class="hero-scroll-indicator" aria-label="Desplazarse a la siguiente sección">
         <i class="bi bi-chevron-down"></i>
       </a>
-    </section>
-
-    <!-- BANDA CTA INFERIOR -->
-    <section class="band-cta  text-bg-dark" aria-labelledby="bandCtaTitle">
-      <div class="container px-custom">
-        <div class="band-cta__inner">
-          <h3 id="bandCtaTitle" class="band-cta__title">
-            Soluciones legales integrales,<span> en todo el país.</span>
-          </h3>
-          <!-- Usá tu componente de botón reutilizable -->
-          <a href="contacto.html" class="btn-cta">Contactanos</a>
-        </div>
-      </div>
     </section>
 
     <!-- === EL ESTUDIO === -->
     <section id="estudio" class="estudio">
       <!-- Fila superior: texto + botón -->
-      <div class="container px-custom mt-5">
-        <div class="row mt-3 py-5" data-aos="fade-up" data-aos-duration="1000">
+      <div class="container px-custom">
+        <div class="row" data-aos="fade-up" data-aos-duration="1000">
           <div class="col-12">
-            <h2 class="section-title mb-4">El Estudio</h2>
+            <h2 class="section-title">El Estudio</h2>
             <p class="section-intro mb-4">
               En <strong>BRVSCU</strong> asesoramos a empresas e instituciones en las principales áreas del derecho,
               combinando <strong>experiencia</strong> técnica, <strong>visión</strong> estratégica y compromiso con los resultados.
             </p>
 
-            <p class="section-intro mb-2">
+            <p class="section-intro">
               Con más de 10 años de <strong>trayectoria</strong>, nuestro equipo de <strong>profesionales</strong> combinan trayectoria judicial, conocimiento práctico y entusiasmo para brindar soluciones legales integrales,
               acompañando los desafíos más complejos con ética, precisión y cercanía.
             </p>
 
-            <a href="equipo.html" class="btn-cta">Conocer al equipo</a>
+            <a href="equipo.html" class="link-cta">Conocer al equipo <i class="bi bi-arrow-right"></i></a>
           </div>
         </div>
 
         <!-- Fila inferior: imagen con efecto de aparición -->
-        <div class="row mt-5" data-aos="fade-up" data-aos-duration="1000">
+        <div class="row" data-aos="fade-up" data-aos-duration="1000">
           <div class="col-12">
             <figure class="estudio-img-wrapper">
-              <img src="/images/todos.jpg" class="img-fluid rounded" alt="De izq. a der.: Agustín Medrano, Sebastián Eduardo Torres, Emilio Rojo Vivot, Francisco Diego Uriburu, Carolina Canziani Aguilar, Francisco Berdaguer, Rómulo Rojo Vivot, Germán Silvero, Lucía Rojo Vivot y Julio Quinto Benites" loading="lazy" decoding="async">
+              <img src="/images/grupal.jpg" class="img-fluid" alt="De izq. a der.: Agustín Medrano, Emilio Rojo Vivot, Lucía Rojo Vivot, Germán Silvero, Rómulo Rojo Vivot, Sebastián Eduardo Torres, Francisco Berdaguer, Francisco Diego Uriburu, Carolina Canziani Aguilar y Julio Quinto Benites" loading="lazy" decoding="async">
             </figure>
           </div>
         </div>
         <div>
-          <p class="caption">De izq. a der.: Agustín Medrano, Sebastián Eduardo Torres, Emilio Rojo Vivot, Francisco Diego Uriburu, Carolina Canziani Aguilar, Francisco Berdaguer, Rómulo Rojo Vivot, Germán Silvero, Lucía Rojo Vivot y Julio Quinto Benites</p>
+          <p class="caption">De izq. a der.: Agustín Medrano, Emilio Rojo Vivot, Lucía Rojo Vivot, Germán Silvero, Rómulo Rojo Vivot, Sebastián Eduardo Torres, Francisco Berdaguer, Francisco Diego Uriburu, Carolina Canziani Aguilar y Julio Quinto Benites</p>
         </div>
       </div>
     </section>
 
     <!-- === ÁREAS DE PRÁCTICA === -->
-    <section id="areas" class="mt-3 py-5 align-items-center bg-light">
+    <section id="areas" class="mt-3 py-5 align-items-center">
       <div class="container  px-custom"  >
         <div class="row align-items-center flex-md-row py-5 mb-1" data-aos="fade-up" data-aos-duration="1000">
           <!-- Texto  -->
@@ -99,7 +86,7 @@ import Footer from "../components/Footer.astro";
           </div>
 
           <div>
-            <a href="areas.html" class="btn-cta ">Ver todas las áreas</a>
+            <a href="areas.html" class="link-cta">Ver todas las áreas <i class="bi bi-arrow-right"></i></a>
           </div>
         </div>
       </div>
