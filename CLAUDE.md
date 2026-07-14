@@ -698,6 +698,8 @@ Hallazgos de contenido (no de diseño) encontrados durante la migración, preser
 - Ninguno nuevo detectado en esta migración — las 3 páginas migradas no mostraron espaciados/márgenes llamativos más allá de lo ya heredado del CSS de producción.
 - Sigue pendiente de Fase 1: confirmar en navegador real el bug de la tilde en `.section-title` bold (ver hallazgo arriba).
 
+**Pendiente para Fase 5 / auditoría de color (no ahora):** `body` tiene `background-color: #FAFAFA` declarado en `styles.css`, heredado del sitio original — Manuel no lo reconoce como una decisión de diseño intencional ("no uso fafafa en el sitio"). Evaluar en esa instancia si conviene reemplazarlo por blanco puro (`#fff`) u otro valor, y relevar qué otras secciones lo heredan sin declaración propia (hoy: `#ultimas-publicaciones` en Home pasó a usar `--color-bg-alt` explícito y ya no depende de este valor, pero puede haber otras que sí).
+
 ---
 
 *UX/UI Designer Skill v1.0 · Manuel Rojo Vivot · 2026*  
