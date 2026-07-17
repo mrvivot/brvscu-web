@@ -208,6 +208,22 @@ body {
     box-shadow: var(--shadow-sm);
   }
 
+/* Despeja la navbar fixed en páginas interiores (título + intro): Equipo, Áreas de
+   práctica, Publicaciones, Contacto. Home no lleva esta clase — su hero maneja el
+   overlay de la navbar a propósito, con su propio layout.
+   Medido con CDP: la navbar fixed mide 104px en desktop y 88px en mobile/tablet
+   (≤991.98px, altura fija por la regla de arriba); el padding-block de --space-section-py
+   (96px/72px) coincidía con eso por casualidad y quedaba corto en ambos breakpoints. */
+body.subpage main {
+  padding-top: 104px;
+}
+
+@media (max-width: 991.98px) {
+  body.subpage main {
+    padding-top: 88px;
+  }
+}
+
  .navbar .navbar-brand {
   display: flex;
   align-items: center;
@@ -854,10 +870,25 @@ font-family: 'EB Garamond', serif;
 }
 
 /* ===== #SOCIOS ===== */
+/* #estudio (texto) y #socios (cards) apilaban dos --space-section-py completos
+   (96+96=192px) entre el párrafo y las cards. Se elimina el padding-bottom de
+   #estudio y se deja un solo salto texto→componente en el padding-top de
+   #socios, mismo criterio que El Estudio en Home. Scopeado a body.subpage
+   porque #estudio también existe en Home (El Estudio), donde este ajuste no
+   aplica. */
+body.subpage #estudio {
+  padding-bottom: 0;
+}
+
 #socios {
+  background: var(--color-bg-alt);
   padding-block: var(--space-section-py) !important;
   margin-top: 0 !important;
   margin-bottom: 0 !important;
+}
+
+body.subpage #socios {
+  padding-top: var(--space-text-component) !important;
 }
 #socios > .container > .row {
   padding-bottom: 0 !important;
@@ -1110,7 +1141,7 @@ footer {
 .publicaciones .section-title {
   font-family: 'EB Garamond', serif;
   font-weight: 700;
-  font-size: var(--fs-xl);
+  font-size: var(--fs-2xl);
   line-height: 1.1;
   color: #000;
 }
