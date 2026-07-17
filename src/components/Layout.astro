@@ -66,6 +66,19 @@ const canonicalPath = currentLocale === "en" ? enPath : esPath;
     AOS.init();
   </script>
 
+  <script>
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Tab') {
+        document.body.classList.add('tabbing');
+      } else if (e.key === 'Escape') {
+        document.body.classList.remove('tabbing');
+      }
+    });
+    document.addEventListener('mousedown', () => {
+      document.body.classList.remove('tabbing');
+    });
+  </script>
+
 </body>
 
 </html>

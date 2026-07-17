@@ -775,8 +775,13 @@ font-family: 'EB Garamond', serif;
   .card-socio:hover .card-img-top { transform: none; }
 }
 
-/* Accessible focus ring: visible cuando la card es enfocada por teclado */
-.card-socio:focus-within {
+/* Accessible focus ring: visible cuando la card es enfocada por teclado.
+   :focus-visible no distingue qué tecla disparó el foco — Bootstrap devuelve
+   el foco al .stretched-link al cerrar el modal, y en algunos casos eso
+   igual calificaba como "visible". body.tabbing (activada solo por Tab,
+   desactivada por Escape/click en Layout.astro) es explícita: cerrar un
+   modal con Escape ya no revive el borde en la card de origen. */
+body.tabbing .card-socio:focus-within {
   outline: 2px solid #892A2A;
   outline-offset: 2px;
 }
@@ -1063,16 +1068,40 @@ footer {
   font-family: 'Inter', sans-serif; /* mantiene coherencia con el resto del sitio */
 }
 
-/* Opcional: enlaces dentro del modal */
+/* Enlaces dentro del modal: el bordó queda reservado para el momento de
+   interacción (hover/focus), no para el reposo — y el subrayado queda
+   siempre visible (WCAG: no usar color como único diferenciador). */
 .modal-body a {
-  color: #892A2A;
-  text-decoration: none;
+  color: #333;
+  text-decoration: underline;
   transition: color 0.2s ease;
 }
 
-.modal-body a:hover {
-  color: #000;
-  text-decoration: underline;
+.modal-body a:hover,
+.modal-body a:focus-visible {
+  color: #892A2A;
+}
+
+/* Tamaños del modal de socio (nombre + bajada). Sin esto, h2/h4 caían en el
+   default de Bootstrap (32px/24px). Generalizado a los 11 modales. */
+.modal-body h2 {
+  font-size: var(--fs-lg);
+}
+
+.modal-body h4 {
+  font-size: var(--fs-md);
+}
+
+/* Ícono + link como una sola unidad (mismo patrón que .footer-contact__item):
+   Idiomas/Email/LinkedIn del modal de socio. */
+.modal-contact-item {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+.modal-contact-item i {
+  color: #892A2A;
 }
 
 .caption {
