@@ -720,14 +720,8 @@ font-family: 'EB Garamond', serif;
   flex-direction: column;
   overflow: hidden;
   border-radius: 8px;
-  transition: transform 0.25s ease, box-shadow 0.25s ease;
-  will-change: transform, box-shadow;
   box-shadow: var(--shadow-sm);
-}
-
-.card-socio:hover {
-  transform: translateY(-6px);
-  box-shadow: var(--shadow-md);
+  cursor: pointer;
 }
 
 .card-socio .card-img-top {
@@ -736,6 +730,15 @@ font-family: 'EB Garamond', serif;
   object-fit: cover;
   display: block;
   transition: transform 0.3s ease;
+}
+
+/* El <button class="stretched-link"> que abre el modal es un botón nativo sin
+   reset: el navegador le aplica su chrome default (borde outset + fondo gris),
+   visible como una línea negra en el borde de la card. */
+.card-socio .stretched-link {
+  border: none;
+  background: none;
+  padding: 0;
 }
 
 /* Sutil zoom de imagen */
@@ -758,7 +761,6 @@ font-family: 'EB Garamond', serif;
   display: -webkit-box;
   -webkit-box-orient: vertical;
   overflow: hidden;
-  min-height: calc(1.25em * 2);
 }
 
 .card-socio .card-subtitle {
@@ -769,8 +771,8 @@ font-family: 'EB Garamond', serif;
 
 /* Reduce motion setting */
 @media (prefers-reduced-motion: reduce) {
-  .card-socio { transition: none; }
-  .card-socio:hover { transform: none; box-shadow: none; }
+  .card-socio .card-img-top { transition: none; }
+  .card-socio:hover .card-img-top { transform: none; }
 }
 
 /* Accessible focus ring: visible cuando la card es enfocada por teclado */
