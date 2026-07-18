@@ -152,7 +152,7 @@ body {
   background-color: #fff;
   border: 1px solid #eee;      /* ✅ borde sutil para contraste y foco */
   border-radius: 8px;
-  padding: var(--space-xs) 1rem;
+  padding: var(--space-xs) var(--space-sm);
   box-shadow: var(--shadow-sm);
   transition: transform 0.2s ease, box-shadow 0.2s ease, background-color 0.2s ease;
   cursor: pointer;
@@ -930,6 +930,7 @@ body.subpage #socios {
 .modal-title {
   font-family: 'EB Garamond', serif;
   font-weight: 700;
+  font-size: var(--fs-lg);
 }
 
 @media (max-width: 576px) {
