@@ -377,6 +377,36 @@ En contextos de salud, gobierno o educación: WCAG AA es el piso. Aspirar a AAA 
 - [ ] Aria-labels en íconos sin texto visible  
 - [ ] Roles ARIA donde el HTML semántico no alcanza
 
+### Patrón técnico: foco visible solo por Tab (`body.tabbing`)
+
+`:focus-visible` nativo no distingue qué tecla disparó el foco — cualquier tecla (Escape incluida) deja al navegador en "modalidad teclado", así que un elemento que recupera el foco programáticamente (ej. Bootstrap devolviendo el foco al trigger al cerrar un modal) puede activar el anillo de foco aunque el usuario no haya usado Tab para llegar ahí.
+
+Cuando el foco visible necesita reaccionar específicamente a Tab — y no a cualquier interacción de teclado — usar un flag propio en vez de depender de la heurística nativa:
+
+```js
+document.addEventListener('keydown', (e) => {
+  if (e.key === 'Tab') {
+    document.body.classList.add('tabbing');
+  } else if (e.key === 'Escape') {
+    document.body.classList.remove('tabbing');
+  }
+});
+document.addEventListener('mousedown', () => {
+  document.body.classList.remove('tabbing');
+});
+```
+
+```css
+body.tabbing .componente:focus-within {
+  outline: 2px solid var(--color-focus);
+  outline-offset: 2px;
+}
+```
+
+**Trade-off a documentar siempre que se use:** este patrón prioriza un flujo de navegación específico por sobre el caso general de WCAG — un usuario que cierra un modal con Escape no ve el foco visible en el elemento al que vuelve, que es justo el momento que WAI-ARIA recomienda señalizar más (reorientación post-cierre de diálogo). Usar solo cuando ese trade-off se evaluó y se acepta explícitamente para ese componente puntual, no por default en cualquier elemento con foco del sitio.
+
+Origen: BRVSCU, revisión de accesibilidad de modales de Equipo (2026-07-16) — ver Parte B para el caso concreto.
+
 ### Colores funcionales de sistema
 
 Los colores semánticos (error, warning, success, info) operan fuera de la paleta de marca cuando el contexto lo requiere. Siempre documentar como excepción explícita con rationale.
@@ -699,6 +729,28 @@ Hallazgos de contenido (no de diseño) encontrados durante la migración, preser
 - Sigue pendiente de Fase 1: confirmar en navegador real el bug de la tilde en `.section-title` bold (ver hallazgo arriba).
 
 **Pendiente para Fase 5 / auditoría de color (no ahora):** `body` tiene `background-color: #FAFAFA` declarado en `styles.css`, heredado del sitio original — Manuel no lo reconoce como una decisión de diseño intencional ("no uso fafafa en el sitio"). Evaluar en esa instancia si conviene reemplazarlo por blanco puro (`#fff`) u otro valor, y relevar qué otras secciones lo heredan sin declaración propia (hoy: `#ultimas-publicaciones` en Home pasó a usar `--color-bg-alt` explícito y ya no depende de este valor, pero puede haber otras que sí).
+
+2026-07-16 — Revisión completa de UI y accesibilidad de Equipo (cards + modales), en 3 rondas iterativas, cerrada en 3 commits locales sobre `astro-migration` (sin push a origin todavía):
+
+**Card `.card-socio` (grid de Equipo):** hover simplificado — se sacó el `translateY(-6px)` + aumento de `box-shadow` del contenedor completo (dos efectos simultáneos en dos elementos distintos se sentía "de más"); queda solo el zoom sutil en `.card-img-top`. Criterio: la card entera sigue siendo clickeable (abre modal), pero el bordó reservado como acento de marca no necesitaba reforzarse con un lift de toda la superficie — `cursor:pointer` + zoom alcanza como señal de interactividad. De paso se reseteó el chrome nativo del `<button class="stretched-link">` (border/background/padding), que sin reset dejaba una línea negra visible en el borde de la card. Gap nombre→rol corregido: `.card-socio .card-title` tenía `min-height: calc(1.25em * 2)` reservando espacio para 2 líneas de nombre por si alguno quebraba — verificado que ninguno de los 11 nombres reales lo necesita a este ancho de card, así que se sacó.
+
+**Foco accesible — dos iteraciones:** primer bug encontrado: el borde bordó de foco (`:focus-within` en `.card-socio`) quedaba pegado después de cerrar cualquier modal con mouse, porque Bootstrap devuelve el foco al `.stretched-link` al cerrar y `:focus-within` no distingue de dónde vino ese foco. Fix inicial: `:has(.stretched-link:focus-visible)`. Segunda vuelta: `:focus-visible` tampoco distingue qué tecla lo disparó — cerrar el modal con Escape igual calificaba como "foco por teclado" y revivía el borde, lo cual Manuel no quería (su flujo real es Tab → abrir → Escape para salir, y el borde reapareciendo ahí se sentía como ruido, no como señal útil). Se reemplazó por un mecanismo propio: script en `Layout.astro` que agrega `body.tabbing` solo con la tecla Tab, y lo saca con Escape o `mousedown`; el CSS pasó a `body.tabbing .card-socio:focus-within`. **Trade-off documentado:** un usuario que navega solo con teclado (sin lector de pantalla) pierde la señal visual de dónde quedó el foco específicamente al cerrar un modal con Escape — es el momento que WAI-ARIA recomienda señalizar más. Decisión tomada a sabiendas por Manuel, priorizando su propio flujo de uso por sobre ese caso. **Patrón nuevo, candidato a Parte A:** `body.tabbing` es reutilizable para cualquier otro componente que necesite distinguir Tab de otras teclas — evaluar si conviene promoverlo a la metodología general en vez de dejarlo solo documentado acá.
+
+**Modal de socio — patrón estabilizado y replicado a los 22 (11 socios × ES/EN):** tomando como maestro el modal de Berdaguer:
+- Tamaños: nombre (`h2`) y bajada (`h4`) caían en los defaults de Bootstrap (32px/24px, nunca tokenizados) — se generalizó a `.modal-body h2 { font-size: var(--fs-lg) }` / `.modal-body h4 { font-size: var(--fs-md) }`, cubriendo los 11 modales con una sola regla.
+- Contacto (Idiomas/Email/LinkedIn): se armó `.modal-contact-item` (mismo patrón que `.footer-contact__item`: ícono + valor como una sola unidad, `display:flex` + `gap`), reemplazando el `<i>` suelto con `px-1`. Las etiquetas visibles "Idiomas:"/"Email:" se sacaron pero no se borraron — quedaron como `<span class="visually-hidden">` para no perder contexto en lectores de pantalla.
+- Color de link: default `#333` + subrayado siempre visible (no depender del color como único diferenciador — WCAG), bordó `#892A2A` reservado para hover/focus-visible. Antes era al revés (bordó en reposo).
+- Durante la replicación a los 10 modales restantes + los 11 en inglés (Berdaguer EN nunca había recibido el patrón), aparecieron bugs preexistentes no relacionados con este trabajo: faltaba el ícono de Idiomas/Email en 8 socios (Lucía, Emilio, Canziani, Uriburu, Benites, Torres, Medrano, Campos, en ambos idiomas), y **se resolvió el LinkedIn duplicado de Silvero anotado como pendiente el 2026-07-12** — tenía un bloque de LinkedIn copiado de Berdaguer; se dejó el link real de Silvero (`german-silvero-0535951b`) en ambos idiomas. También corregidos: `<strong></strong>` vacíos sueltos y un `target="_blank"rel=` sin espacio.
+
+**Hallazgos adicionales en el mismo diff, no discutidos en esta conversación pero ya resueltos y commiteados** (probablemente trabajados directo en Claude Code sin reportar): `body.subpage` agregado en `Layout.astro` para diferenciar Home de las páginas interiores; despeje de navbar fixed en subpages (104px desktop / 88px mobile, medido con CDP — el padding-block existente coincidía por casualidad y quedaba corto); doble padding entre `#estudio` y `#socios` corregido (apilaban 192px, ahora un solo salto); `#socios` recibió `background: var(--color-bg-alt)` (antes sin fondo propio); y `.publicaciones .section-title` unificado de `--fs-xl` a `--fs-2xl` para matchear el `.section-title` general.
+
+**Commits (locales, sin push a origin todavía):**
+- `d187d6c` — layout de página y espaciado en subpages + fix de Publicaciones.
+- `fe5dab1` — hover y gap de `.card-socio`.
+- `95a176d` — foco accesible + patrón de contacto en los 22 modales.
+Verificado por diff contra backup: el resultado final de los 3 commits es byte-idéntico al estado pre-split. Working tree limpio.
+
+**Pendiente:** decidir si `body.tabbing` se documenta también en la Parte A (metodología general) como patrón reutilizable. Push a origin, a criterio de Manuel.
 
 ---
 
