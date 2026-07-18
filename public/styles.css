@@ -619,9 +619,9 @@ font-family: 'EB Garamond', serif;
 
 /* Base reutilizable para el párrafo intro */
 .section-intro {
-  font-size: var(--fs-md);
+  font-size: var(--fs-base);
   line-height: 1.7;
-  color: #111;
+  color: #212121;
 }
 
 /* === SISTEMA DE ESPACIADO === */
@@ -695,7 +695,7 @@ font-family: 'EB Garamond', serif;
 
   font-size: var(--fs-base);
   line-height: 1.8;
-  color: #444;
+  color: #212121;
 
 }
 
@@ -1179,9 +1179,9 @@ footer {
 }
 
 .publicaciones .section-intro {
-  font-size: var(--fs-md);
+  font-size: var(--fs-base);
   line-height: 1.7;
-  color: #333;
+  color: #212121;
 }
 
 /* === CARD DE PUBLICACIÓN === */
@@ -1230,8 +1230,8 @@ footer {
 
 /* (Se mantiene .card-text por si la usás en otros lados) */
 .card-publicacion .card-text {
-  font-size: var(--fs-sm);
-  color: #555;
+  font-size: var(--fs-base);
+  color: #212121;
   margin-bottom: 1rem;
 }
 
@@ -1276,9 +1276,6 @@ footer {
 }
 
 @media (max-width: 575.98px) {
-  .publicaciones .section-intro {
-    font-size: var(--fs-sm);
-  }
   .btn-cta-download {
     font-size: var(--fs-xs);
     padding: 0.45rem var(--space-sm);
