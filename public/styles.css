@@ -1302,3 +1302,120 @@ footer {
   }
 }
 
+/* ===== ÁREAS DE PRÁCTICA — LAYOUT DE REFERENCIA (índice + detalle expandible) =====
+   Reemplaza el grid de 16 botones + 16 modales. Dos columnas en desktop
+   (índice angosto + listado), una columna en mobile. */
+.areas-layout {
+  display: grid;
+  grid-template-columns: 240px 1fr;
+  gap: var(--space-text-component);
+  align-items: start;
+}
+
+@media (max-width: 991.98px) {
+  .areas-layout {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Índice: sticky en desktop, despejando la navbar fixed con el mismo valor
+   que usa body.subpage main (104px). En mobile deja de ser sticky (mismo
+   breakpoint 991.98px que el resto del sitio) y pasa a bloque simple arriba
+   del listado — a esa altura el layout ya es de una sola columna, así que
+   "sticky" no tendría contra qué desplazarse igual. */
+.areas-index {
+  position: sticky;
+  top: 104px;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2xs);
+  border-right: 1px solid #ddd;
+  padding-right: var(--space-sm);
+}
+
+.areas-index a {
+  font-size: var(--fs-sm);
+  color: #333;
+  transition: color 0.2s ease;
+}
+
+.areas-index a:hover,
+.areas-index a:focus-visible {
+  color: var(--accent-color);
+}
+
+@media (max-width: 991.98px) {
+  .areas-index {
+    position: static;
+    border-right: none;
+    padding-right: 0;
+  }
+}
+
+/* Cada área: título con ícono + copete + detalle expandible.
+   Separación entre secciones con --space-text-component: no existe un token
+   literal --space-lg/--space-xl en el sistema — este es el que ya se usa
+   sitewide para separar un bloque de contenido del siguiente. */
+.areas-list section {
+  border-top: 1px solid #ddd;
+  padding-top: var(--space-text-component);
+}
+
+.areas-list section:first-child {
+  border-top: none;
+  padding-top: 0;
+}
+
+.areas-list h3 {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2xs);
+  margin-bottom: var(--space-3xs);
+  font-size: var(--fs-lg);
+}
+
+.areas-list h3 i {
+  font-size: var(--fs-sm);
+  color: var(--accent-color);
+}
+
+.areas-list details summary {
+  cursor: pointer;
+  list-style: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  color: var(--accent-color);
+  font-family: 'Inter', sans-serif;
+  font-weight: 600;
+  font-size: var(--fs-sm);
+}
+
+.areas-list details summary::-webkit-details-marker {
+  display: none;
+}
+
+.areas-list details summary .bi-chevron-down {
+  transition: transform 0.2s ease;
+}
+
+.areas-list details[open] summary .bi-chevron-down {
+  transform: rotate(180deg);
+}
+
+.areas-list details[open] summary {
+  margin-bottom: var(--space-sm);
+}
+
+/* Subtítulos de subsección y listas dentro del detalle expandido: un paso
+   por debajo del texto de párrafo principal (18px), ya que es contenido
+   denso/secundario que solo se ve al expandir. --fs-md es el mismo token
+   que usaba .modal-body h4 antes de esta migración. */
+.areas-list details h4 {
+  font-size: var(--fs-md);
+}
+
+.areas-list details li {
+  font-size: var(--fs-sm);
+}
+
