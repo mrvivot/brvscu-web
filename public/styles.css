@@ -26,6 +26,27 @@ body {
     color: var(--color-heading);
   }
 
+  /* Skip-link: oculto salvo con foco por teclado */
+  .skip-link {
+    position: absolute;
+    top: -100px;
+    left: 0;
+    z-index: 2000;
+    background: var(--color-ink);
+    color: #fff;
+    padding: var(--space-xs) var(--space-sm);
+    text-decoration: none;
+    font-family: 'Inter', sans-serif;
+    font-weight: 600;
+    transition: top 0.2s ease;
+  }
+
+  .skip-link:focus-visible {
+    top: 0;
+    outline: 2px solid var(--accent-color-hover);
+    outline-offset: 2px;
+  }
+
 
   .btn, .nav-link {
     font-family: 'Inter', sans-serif;
