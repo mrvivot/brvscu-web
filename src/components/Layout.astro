@@ -36,6 +36,20 @@ const canonicalPath = currentLocale === "en" ? enPath : esPath;
   <link rel="alternate" href={siteUrl + enPath} hreflang="en" />
   <link rel="alternate" href={siteUrl + esPath} hreflang="x-default" />
 
+  <!-- Open Graph -->
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content={title} />
+  <meta property="og:description" content={description} />
+  <meta property="og:url" content={siteUrl + canonicalPath} />
+  <meta property="og:site_name" content={currentLocale === "en" ? "BRVSCU Law Firm" : "BRVSCU Abogados"} />
+  <meta property="og:locale" content={currentLocale === "en" ? "en_US" : "es_AR"} />
+  <meta property="og:locale:alternate" content={currentLocale === "en" ? "es_AR" : "en_US"} />
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content={title} />
+  <meta name="twitter:description" content={description} />
+
   <!-- Bootstrap CSS (primero) -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/css/bootstrap.min.css" rel="stylesheet">
 
