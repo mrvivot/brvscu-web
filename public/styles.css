@@ -1438,7 +1438,7 @@ footer {
   }
 }
 
-.areas-list h3 {
+.areas-list h2 {
   display: flex;
   align-items: center;
   gap: var(--space-2xs);
@@ -1446,7 +1446,7 @@ footer {
   font-size: var(--fs-lg);
 }
 
-.areas-list h3 i {
+.areas-list h2 i {
   font-size: var(--fs-sm);
   color: var(--accent-color);
 }
@@ -1482,9 +1482,17 @@ footer {
 /* Subtítulos de subsección y listas dentro del detalle expandido: un paso
    por debajo del texto de párrafo principal (18px), ya que es contenido
    denso/secundario que solo se ve al expandir. --fs-md es el mismo token
-   que usaba .modal-body h4 antes de esta migración. */
-.areas-list details h4 {
+   que usaba .modal-body h4 antes de esta migración.
+   Antes eran <h4>, que no matcheaba la regla global h1,h2,h3,.navbar — al
+   promoverlos a <h3> (fix de jerarquía de headings) empezaron a heredar
+   EB Garamond/700/negro de esa regla. Se fija acá el mismo tratamiento
+   visual que tenían como h4 (Inter/500/--color-text-primary), para que el
+   cambio de tag sea puramente estructural. */
+.areas-list details h3 {
   font-size: var(--fs-md);
+  font-family: 'Inter', sans-serif;
+  font-weight: 500;
+  color: var(--color-text-primary);
 }
 
 .areas-list details li {
