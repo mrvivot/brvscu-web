@@ -621,11 +621,23 @@ La Parte A (metodología) nunca se modifica por proyecto.
 
 ### Design system activo
 
-**Color** — token único agregado hasta ahora (el resto de los colores del sitio siguen hardcodeados, pendiente de auditoría completa):
+**Color** — sistema de tokens completo desde la auditoría del 2026-07-20 (antes solo existían `--accent-color` y `--color-bg-alt`, y ni esos se usaban de forma consistente — había hex crudo repetido en paralelo):
 
 | Token | Valor | Uso |
 |---|---|---|
-| `--color-bg-alt` | `#F6F6F6` | Fondo gris claro alterno de sección (`.estudio`, `#areas` en Home) — reemplaza el hardcode propio de `.estudio` y la clase `bg-light` de Bootstrap (`#f8f9fa`, un gris ligeramente distinto) que usaba Áreas de práctica. Antes del token, las dos secciones usaban grises técnicamente diferentes aunque visualmente parecidos; verificado con computed style que ahora ambas resuelven a `rgb(246, 246, 246)` exacto. |
+| `--accent-color` | `#892A2A` | Bordó de marca — CTAs, links, foco accesible |
+| `--accent-color-hover` | `#621e1e` | Estado hover de botones con `--accent-color` |
+| `--accent-color-active` | `#4e1818` | Estado active/pressed |
+| `--color-bg-alt` | `#F6F6F6` | Fondo gris claro alterno de sección (`.estudio`, `#areas` en Home) |
+| `--color-bg-page` | `#FAFAFA` | Fondo de `body` — formalizado como decisión intencional (antes un valor huérfano heredado del sitio original, sin reconocerse como propio) |
+| `--color-ink` | `#111` | Near-black reciclado en dos roles: texto (nav-link, card-title) y fondo oscuro (footer, banda CTA) — mismo valor, mismo tono, se mueven juntos si cambia |
+| `--color-heading` | `#000` | h1/h2/h3/.navbar |
+| `--color-text-primary` | `#212121` | Texto de párrafo estándar (18px sitewide, ver Fase 3.5) |
+| `--color-text-secondary` | `#333` | Links, dropdown items |
+| `--color-text-muted` | `#666` | Texto secundario (footer copy, card-meta). Absorbió el `#555` que tenía en solitario el subtítulo de cards de Equipo — cambio visual mínimo, confirmado. |
+| `--color-border-subtle` | `#ddd` | Líneas divisorias |
+
+CSS muerto detectado en la misma pasada, marcado pero no borrado (sin referencias en `src/`): `.btn-cta-practica`/`.btn-cta-practica-lg` (grid viejo de 16 botones de Áreas de práctica, pre-rediseño), `.btn-cta--ghost`, `.hero-cta-btn`.
 
 **Tipografía** — familia única de titulares confirmada: EB Garamond (se retiró Merriweather, que quedaba tapada por Times New Roman y nunca se veía; Times New Roman también se retiró). Inter se mantiene para botones y nav. Escala (base 16px), en `public/styles.css`:
 
@@ -727,6 +739,18 @@ Hallazgos de contenido (no de diseño) encontrados durante la migración, preser
 **Pendientes para Fase 3.5 (revisión de detalle):**
 - Ninguno nuevo detectado en esta migración — las 3 páginas migradas no mostraron espaciados/márgenes llamativos más allá de lo ya heredado del CSS de producción.
 - Sigue pendiente de Fase 1: confirmar en navegador real el bug de la tilde en `.section-title` bold (ver hallazgo arriba).
+
+Decisión: la revisión mobile (paso 9 del protocolo de auditoría, Parte A sección 05) se retrofittea ahora, página por página (Equipo, Áreas, Home, Publicaciones, Contacto, ES+EN), en vez de posponerla a una pasada única en Fase 6 (QA).
+Alternativas consideradas: dejar mobile para el final, como pasada dedicada de QA.
+Criterio: toda la revisión de detalle hecha en Fase 3.5 hasta el 2026-07-20 se verificó únicamente a 1440px (screenshots y tests CDP de Claude Code, todos en desktop) — ninguna página está realmente cerrada según el propio protocolo de auditoría, que lista responsive como parte de cerrar una página, no como paso aparte al final.
+Trade-off: más trabajo ahora sobre páginas que se creían cerradas, pero evita descubrir problemas estructurales de responsive recién en QA, cuando el retrabajo sería sobre más páginas a la vez.
+Estado: confirmada (2026-07-20).
+
+Decisión: no se agrega formulario de contacto a la página de Contacto.
+Alternativas consideradas: conectar un formulario a Formspree/Netlify Forms u otro servicio.
+Criterio: pedido explícito del cliente — no le interesa tener uno.
+Trade-off: Contacto queda con datos de contacto + mapa únicamente, sin captura de leads propia dentro del sitio.
+Estado: confirmada (2026-07-20).
 
 **Pendiente para Fase 5 / auditoría de color (no ahora):** `body` tiene `background-color: #FAFAFA` declarado en `styles.css`, heredado del sitio original — Manuel no lo reconoce como una decisión de diseño intencional ("no uso fafafa en el sitio"). Evaluar en esa instancia si conviene reemplazarlo por blanco puro (`#fff`) u otro valor, y relevar qué otras secciones lo heredan sin declaración propia (hoy: `#ultimas-publicaciones` en Home pasó a usar `--color-bg-alt` explícito y ya no depende de este valor, pero puede haber otras que sí).
 
