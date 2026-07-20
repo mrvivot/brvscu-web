@@ -355,7 +355,8 @@ body.subpage main {
 /* ==== HERO ESTÁTICO ==== */
 #hero.hero-static {
   position: relative;
-  height: 100vh; /* pantalla completa; la navbar fixed queda superpuesta arriba */
+  height: 100vh; /* fallback para navegadores sin soporte de svh */
+  height: 100svh;
   width: 100%;
   overflow: hidden;
 }
@@ -478,7 +479,8 @@ font-family: 'EB Garamond', serif;
 /* ==== RESPONSIVE ==== */
 @media (max-width: 991.98px) {
   #hero.hero-static {
-    height: 88vh;
+    height: 88vh; /* fallback para navegadores sin soporte de svh */
+    height: 88svh;
   }
   #hero .hero-copy {
     padding-left: 24px;
@@ -997,6 +999,12 @@ footer {
   color: rgba(255, 255, 255, 0.35);
 }
 
+@media (max-width: 575.98px) {
+  .footer-contact__sep {
+    display: none;
+  }
+}
+
 /* Nivel 3: copyright, el más chico/liviano */
 .footer-copy {
   font-size: var(--fs-xs);
@@ -1280,6 +1288,7 @@ footer {
   }
   .card-publicacion .card-title {
     font-size: var(--fs-sm);
+    height: calc(var(--fs-sm) * 1.3 * 3);
   }
 }
 
