@@ -20,8 +20,32 @@ import Footer from "../components/Footer.astro";
           A través de una práctica interdisciplinaria, acompañamos a empresas y particulares con soluciones jurídicas sólidas, estratégicas y ajustadas a cada necesidad.
         </p>
 
+        <div class="areas-index-mobile d-lg-none dropdown">
+          <button class="areas-index-mobile__btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+            Ir a un área <i class="bi bi-chevron-down"></i>
+          </button>
+          <ul class="dropdown-menu">
+            <li><a class="dropdown-item" href="#administrativo">Administrativo</a></li>
+            <li><a class="dropdown-item" href="#agronegocios">Agronegocios</a></li>
+            <li><a class="dropdown-item" href="#bancario">Bancario</a></li>
+            <li><a class="dropdown-item" href="#defensa-de-la-competencia">Defensa de la competencia</a></li>
+            <li><a class="dropdown-item" href="#concursal">Concursal</a></li>
+            <li><a class="dropdown-item" href="#defensa-del-consumidor">Defensa del consumidor</a></li>
+            <li><a class="dropdown-item" href="#contratos">Contratos</a></li>
+            <li><a class="dropdown-item" href="#derecho-del-deporte">Derecho del deporte</a></li>
+            <li><a class="dropdown-item" href="#derecho-del-entretenimiento-telecomunicaciones-y-medios-audiovisuales">Derecho del entretenimiento, telecomunicaciones y medios audiovisuales</a></li>
+            <li><a class="dropdown-item" href="#familia-y-sucesiones">Familia y sucesiones</a></li>
+            <li><a class="dropdown-item" href="#inmobiliario">Inmobiliario</a></li>
+            <li><a class="dropdown-item" href="#laboral">Laboral</a></li>
+            <li><a class="dropdown-item" href="#litigios-y-arbitrajes">Litigios y arbitrajes</a></li>
+            <li><a class="dropdown-item" href="#recupero-de-creditos">Recupero de créditos</a></li>
+            <li><a class="dropdown-item" href="#seguros">Seguros</a></li>
+            <li><a class="dropdown-item" href="#societario">Societario</a></li>
+          </ul>
+        </div>
+
         <div class="areas-layout">
-          <nav class="areas-index" aria-label="Índice de áreas de práctica">
+          <nav class="areas-index d-none d-lg-flex" aria-label="Índice de áreas de práctica">
             <a href="#administrativo">Administrativo</a>
             <a href="#agronegocios">Agronegocios</a>
             <a href="#bancario">Bancario</a>
