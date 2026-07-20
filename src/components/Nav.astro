@@ -26,6 +26,11 @@ const t = isEn
       areas: "Practice Areas",
       publications: "Publications",
       contact: "Contact us",
+      bottomHome: "Home",
+      bottomTeam: "Team",
+      bottomAreas: "Areas",
+      bottomPublications: "Publications",
+      bottomContact: "Contact",
     }
   : {
       logoAlt: "Berdaguer | Rojo Vivot | Silvero | Canziani | Uriburu - Abogados",
@@ -33,6 +38,11 @@ const t = isEn
       areas: "Áreas de práctica",
       publications: "Publicaciones",
       contact: "Contacto",
+      bottomHome: "Inicio",
+      bottomTeam: "Equipo",
+      bottomAreas: "Áreas",
+      bottomPublications: "Publicaciones",
+      bottomContact: "Contacto",
     };
 ---
 
@@ -43,30 +53,54 @@ const t = isEn
       <img src="/images/brvscu.png" alt={t.logoAlt} />
     </a>
 
-    <!-- Toggler para mobile -->
-    <button class="navbar-toggler ms-auto" type="button"
-            data-bs-toggle="collapse" data-bs-target="#navbarNav"
-            aria-controls="navbarNav" aria-expanded="false" aria-label="Menú">
-      <span class="navbar-toggler-icon"></span>
-    </button>
+    <ul class="navbar-nav ms-auto d-none d-lg-flex">
+      <li class="nav-item px-2"><a class="nav-link" href={teamUrl}>{t.team}</a></li>
+      <li class="nav-item px-2"><a class="nav-link" href={areasUrl}>{t.areas}</a></li>
+      <li class="nav-item px-2"><a class="nav-link" href={publicationsUrl}>{t.publications}</a></li>
+      <li class="nav-item px-2"><a class="nav-link" href={contactUrl}>{t.contact}</a></li>
 
-    <div class="collapse navbar-collapse navbar-collapse-mobile" id="navbarNav">
-      <ul class="navbar-nav ms-auto">
-        <li class="nav-item px-2"><a class="nav-link" href={teamUrl}>{t.team}</a></li>
-        <li class="nav-item px-2"><a class="nav-link" href={areasUrl}>{t.areas}</a></li>
-        <li class="nav-item px-2"><a class="nav-link" href={publicationsUrl}>{t.publications}</a></li>
-        <li class="nav-item px-2"><a class="nav-link" href={contactUrl}>{t.contact}</a></li>
+      <li class="nav-item dropdown px-2">
+        <a class="nav-link dropdown-toggle" href="#" id="languageDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+          🌐 {isEn ? "EN" : "ES"}
+        </a>
+        <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="languageDropdown">
+          <li><a class="dropdown-item" href={esUrl}>Español</a></li>
+          <li><a class="dropdown-item" href={enUrl}>English</a></li>
+        </ul>
+      </li>
+    </ul>
 
-        <li class="nav-item dropdown px-2">
-          <a class="nav-link dropdown-toggle" href="#" id="languageDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-            🌐 {isEn ? "EN" : "ES"}
-          </a>
-          <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="languageDropdown">
-            <li><a class="dropdown-item" href={esUrl}>Español</a></li>
-            <li><a class="dropdown-item" href={enUrl}>English</a></li>
-          </ul>
-        </li>
+    <div class="dropdown d-lg-none nav-lang-mobile">
+      <button class="nav-lang-mobile__btn" type="button" id="languageDropdownMobile" data-bs-toggle="dropdown" aria-expanded="false" aria-label={isEn ? "Change language" : "Cambiar idioma"}>
+        🌐 {isEn ? "EN" : "ES"}
+      </button>
+      <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="languageDropdownMobile">
+        <li><a class="dropdown-item" href={esUrl}>Español</a></li>
+        <li><a class="dropdown-item" href={enUrl}>English</a></li>
       </ul>
     </div>
   </div>
+</nav>
+
+<nav class="bottom-nav d-lg-none" aria-label={isEn ? "Main navigation" : "Navegación principal"}>
+  <a href={homeUrl} class={`bottom-nav__item ${path === "" ? "is-active" : ""}`}>
+    <i class="bi bi-house-door-fill"></i>
+    <span>{t.bottomHome}</span>
+  </a>
+  <a href={teamUrl} class={`bottom-nav__item ${path === "equipo" ? "is-active" : ""}`}>
+    <i class="bi bi-people-fill"></i>
+    <span>{t.bottomTeam}</span>
+  </a>
+  <a href={areasUrl} class={`bottom-nav__item ${path === "areas" ? "is-active" : ""}`}>
+    <i class="bi bi-briefcase-fill"></i>
+    <span>{t.bottomAreas}</span>
+  </a>
+  <a href={publicationsUrl} class={`bottom-nav__item ${path === "publicaciones" ? "is-active" : ""}`}>
+    <i class="bi bi-newspaper"></i>
+    <span>{t.bottomPublications}</span>
+  </a>
+  <a href={contactUrl} class={`bottom-nav__item ${path === "contacto" ? "is-active" : ""}`}>
+    <i class="bi bi-envelope-fill"></i>
+    <span>{t.bottomContact}</span>
+  </a>
 </nav>

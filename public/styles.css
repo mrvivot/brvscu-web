@@ -282,16 +282,6 @@ body.subpage main {
 }
 
 
-/* Toggler sin borde “feíto” */
-.navbar-toggler { 
-  border: none;
-}
-
-/* Ícono del toggler visible en fondo claro */
-.navbar-toggler-icon {
-  background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 30 30' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgba(33,33,33,0.75)' stroke-width='2' stroke-linecap='round' d='M4 7h22M4 15h22M4 23h22'/%3E%3C/svg%3E");
-}
-
 /* MOBILE (≤992px): menos padding y logo más chico para que quepa todo en una fila */
 @media (max-width: 991.98px) {
   .navbar {
@@ -306,47 +296,65 @@ body.subpage main {
   .navbar .container-fluid {
     gap: .5rem;                      /* un poco de aire entre logo y toggler */
   }
-  /* Opcional: compactar enlaces del colapso */
-  .navbar-nav .nav-link {
-    padding-top: .5rem;
-    padding-bottom: .5rem;
-  }
 }
 
-/* === FIX comportamiento del menú mobile === */
+/* Selector de idioma compacto, reemplaza la posición de la hamburguesa en mobile */
+.nav-lang-mobile__btn {
+  border: none;
+  background: transparent;
+  font-family: 'Inter', sans-serif;
+  font-size: 0.8rem;
+  font-weight: 500;
+  color: #111;
+  padding: 0.3rem 0.4rem;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+/* Bottom navigation — mobile only */
+.bottom-nav {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+  display: flex;
+  background: #fff;
+  border-top: 1px solid #ddd;
+  box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.06);
+  padding-bottom: env(safe-area-inset-bottom, 0);
+}
+
+.bottom-nav__item {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 2px;
+  padding: 0.5rem 0.25rem;
+  color: #666;
+  text-decoration: none;
+  font-family: 'Inter', sans-serif;
+  font-size: 0.65rem;
+  font-weight: 500;
+  text-align: center;
+}
+
+.bottom-nav__item i {
+  font-size: 1.1rem;
+}
+
+.bottom-nav__item.is-active {
+  color: var(--accent-color);
+}
+
+/* Deja espacio al final de cada página para que la bottom nav fija no tape contenido/footer */
 @media (max-width: 991.98px) {
-
-  /* el menú se abre como columna debajo de la navbar */
-  .navbar-collapse-mobile {
-    position: absolute;
-    top: 100%;
-    left: 0;
-    right: 0;
-    background-color: #fff; /* fondo blanco que cubre el logo */
-    padding: 1rem 0;
-    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-    z-index: 999; /* sobre el resto del contenido */
-  }
-
-  /* los enlaces se apilan en columna centrada */
-  .navbar-nav {
-    flex-direction: column;
-    align-items: flex-start;
-    padding-left: 1.5rem;
-  }
-
-  /* separaciones suaves entre links */
-  .navbar-nav .nav-item {
-    margin-bottom: 0.5rem;
-  }
-
-  /* evita que el logo quede superpuesto */
-  .navbar-brand {
-    z-index: 1001;
+  body {
+    padding-bottom: calc(69px + env(safe-area-inset-bottom, 0));
   }
 }
-
-
 
 
 
@@ -1297,17 +1305,6 @@ footer {
     font-size: var(--fs-xs);
     padding: 0.45rem var(--space-sm);
   }
-}
-
-
-/* Icono hamburguesa visible (color #892A2A sobre fondo claro) */
-.custom-navbar .navbar-toggler {
-  border: 0; /* opcional */
-}
-
-.custom-navbar .navbar-toggler-icon {
-  /* SVG inline para que no dependa de .navbar-light/.navbar-dark */
-  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba(137,42,42, 1)' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
 }
 
 
