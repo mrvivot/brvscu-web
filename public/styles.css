@@ -133,6 +133,11 @@ body {
   background-color: var(--accent-color-active);
 }
 
+.btn-cta:focus-visible {
+  outline: 2px solid var(--accent-color);
+  outline-offset: 2px;
+}
+
 /* === Link CTA: versión liviana para acciones secundarias (no conversión) === */
 .link-cta {
   display: inline-flex;
