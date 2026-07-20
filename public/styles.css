@@ -801,7 +801,7 @@ body.tabbing .card-socio:focus-within {
   
 /* CONTACTO */
 .contacto-section {
-  background-color: #111;
+  background: var(--color-bg-alt);
   padding-top: var(--space-section-py);
   padding-bottom: var(--space-section-py);
 }
@@ -817,21 +817,24 @@ body.tabbing .card-socio:focus-within {
 }
 
 
+/* Sin uso: el h2 usa .section-title.text-white directo, no esta clase. */
 .section-title-contacto { color: #fff; }
 
 .contacto-list li {
-  font-size: var(--fs-sm);
+  font-size: var(--fs-base);
   line-height: 1.6;
 }
 
 .contacto-icon {
-  font-size: var(--fs-md);
-  color: #fff;                /* para contraste en fondo oscuro */
-  margin-top: 2px;
+  width: 18px;
+  height: 18px;
+  color: var(--accent-color);
+  margin-top: 6px;
+  flex-shrink: 0;
 }
 
 .contacto-link {
-  color: #fff;
+  color: var(--accent-color);
   text-underline-offset: 2px;
 }
 .contacto-link:hover {
@@ -847,6 +850,7 @@ body.tabbing .card-socio:focus-within {
   min-height: 260px;
   border-radius: 8px;
   overflow: hidden;
+  box-shadow: var(--shadow-sm); /* el mapa a veces cae en un gris casi idéntico al fondo de la sección */
   aspect-ratio: 16 / 9;       /* ajustá a gusto */
 }
 
