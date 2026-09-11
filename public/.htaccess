@@ -1,0 +1,7 @@
+RewriteEngine On
+
+# Fuerza HTTPS y elimina "www" en un solo salto 301
+# (evita duplicar redirects: cubre las 4 combinaciones http/https × con/sin www)
+RewriteCond %{HTTPS} off [OR]
+RewriteCond %{HTTP_HOST} ^www\.(.+)$ [NC]
+RewriteRule ^ https://brvscu.com.ar%{REQUEST_URI} [L,R=301,NE]

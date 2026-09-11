@@ -1,0 +1,21 @@
+# BRVSCU Abogados
+
+> Estudio jurídico en Buenos Aires (Argentina) con más de 10 años de trayectoria. Asesoramiento legal integral en derecho empresarial, civil, comercial, laboral y administrativo, para empresas y personas.
+
+Sitio disponible en español (por defecto, sin prefijo) e inglés (bajo /en/).
+
+## Páginas principales
+
+- [Inicio](https://brvscu.com.ar/): Presentación del estudio y áreas de práctica.
+- [Equipo](https://brvscu.com.ar/equipo/): Abogados del estudio y sus especialidades — societario, laboral, concursal, familia y sucesiones, entre otras.
+- [Áreas de práctica](https://brvscu.com.ar/areas/): Detalle de especialidades — societario, laboral, concursal, contratos, litigios, inmobiliario, seguros y más.
+- [Publicaciones](https://brvscu.com.ar/publicaciones/): Artículos y análisis legales escritos por los abogados del estudio.
+- [Contacto](https://brvscu.com.ar/contacto/): Dirección (Avda. Santa Fe 1752, CABA), teléfono, email y mapa.
+
+## English
+
+- [Home](https://brvscu.com.ar/en/)
+- [Team](https://brvscu.com.ar/en/equipo/)
+- [Practice areas](https://brvscu.com.ar/en/areas/)
+- [Publications](https://brvscu.com.ar/en/publicaciones/)
+- [Contact](https://brvscu.com.ar/en/contacto/)
