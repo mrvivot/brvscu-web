@@ -36,6 +36,10 @@ const canonicalPath = currentLocale === "en" ? enPath : esPath;
   <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
   <link rel="apple-touch-icon" href="/apple-touch-icon.png">
 
+  {path === "" && (
+    <link rel="preload" as="image" href="/images/entrada.jpg" fetchpriority="high" />
+  )}
+
   <!-- Microsoft Clarity -->
   <script is:inline type="text/javascript">
     (function(c,l,a,r,i,t,y){
@@ -103,6 +107,7 @@ const canonicalPath = currentLocale === "en" ? enPath : esPath;
   <!-- Fuentes -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
   <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
 
